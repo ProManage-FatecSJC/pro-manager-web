@@ -1,0 +1,32 @@
+.nav_menu {
+  background-color: #566395;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 64px;
+
+  h1 {
+    margin-left: 80px;
+
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "lato", sans-serif;
+    letter-spacing: 0.16em;
+  }
+
+  .icon_div {
+    margin-right: 80px;
+
+    button {
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0 1.5rem 0 0;
+    }
+  }
+}
