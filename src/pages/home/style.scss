@@ -90,6 +90,50 @@
             }
         }
 
+        .filter_container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+            padding: 1rem 1rem 0.5rem 1rem;
+
+            .filter {
+                label {
+                    font-weight: 500;
+                    color: #6B7494;
+                    margin-right: 0.5rem;
+                }
+
+                select {
+                    padding: 0.5rem 1rem;
+
+                    border: none;
+                    border-bottom: 2px solid #29292e;
+                    background: none;
+
+                    outline: none;
+
+                    color: #29292e;
+                    font-weight: 500;
+
+                    font-size: 1rem;
+
+                    transition: all 0.2s;
+
+                    cursor: pointer;
+                    
+                    option {
+                        color: #29292e;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .filter:nth-child(1) {
+                margin-right: 2rem;
+            }
+        }
+
         table {
             margin-top: 1rem;
             width: 100%;
