@@ -1,4 +1,5 @@
 import { FileSearch } from 'phosphor-react';
+import { PartnerCard } from '../../components/partnerCard';
 import './style.scss';
 
 
@@ -13,9 +14,11 @@ export function Home() {
                 <table>
                     <thead>
                         <tr>
-                            <th className='th_name'>Nome</th>
-                            <th className='th_email'>E-mail</th>
-                            <th className='th_edit'>Editar</th>
+                            <PartnerCard
+                            partnerName='Fatec SJC'
+                            partnerStatus='ES em analise'
+                            partnetResponsibilityName='Vinicius Buarque'
+                            />
                         </tr>
                     </thead>
                     <tbody>
