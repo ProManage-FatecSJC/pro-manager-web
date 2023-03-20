@@ -22,11 +22,11 @@ export function Navbar() {
             <h1>PROMANAGER</h1>
             <div className='icon_div'>
                 <button name='bellIcon' onClick={handleIconFill}>
-                    {iconBellFill ? <Bell size={24} weight='fill' /> : <Bell size={24} />}
+                    {iconBellFill ? <Bell size={24} weight='fill' color='#f8f8f8'/> : <Bell size={24} color='#f8f8f8'/>}
                 </button>
 
                 <button name='userIcon' onClick={handleIconFill}>
-                    {iconUserFill ? <User size={24} weight='fill' /> : <User size={24} />}
+                    {iconUserFill ? <User size={24} weight='fill' color='#f8f8f8'/> : <User size={24} color='#f8f8f8'/>}
                 </button>
             </div>
         </div>

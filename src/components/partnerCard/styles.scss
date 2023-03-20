@@ -1,0 +1,75 @@
+.container_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 2px solid #7A736E;
+    border-left: 5px solid #7A736E;
+    border-radius: 5px;
+    background: none;
+
+    width: 100%;
+    padding: 1rem;
+
+    transition: all 0.2s ease-in-out;
+
+    .partner_img {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        width: 100px;
+        height: 100%;
+
+        img {
+            width: 100px;
+            height: 100px;
+
+            border-radius: 50%;
+            border: 2px solid #7A736E;
+            object-fit: cover;
+        }
+    }
+
+    .info_card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .partner_responsibility_img {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        width: 50px;
+        height: 100%;
+
+        img {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 50%;
+            border: 2px solid #7A736E;
+            object-fit: cover;
+        }
+    }
+
+    &:hover {
+        border: 2px solid #566395;
+        border-left: 5px solid #566395;
+        cursor: pointer;
+    }
+}
