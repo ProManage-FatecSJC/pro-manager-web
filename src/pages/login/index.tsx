@@ -1,28 +1,19 @@
+import { useState } from 'react';
 import './style.scss'
 
 import { EyeClosed, Eye } from 'phosphor-react';
 import { NavLink } from "react-router-dom";
 
-import Logo from '../../assets/images/logo.svg'
-import Background from '../../assets/images/loginPageImage.svg'
-import { useState } from 'react';
+import Logo from '../../assets/images/logo.svg';
+import Background from '../../assets/images/undraw_selecting_team_re_ndkb.svg';
+import Blob from '../../assets/images/blob.svg';
+
 
 export function Login() {
     const [showPassword, setShowPassword] = useState(false)
-    const [isDisabled, setIsDisabled] = useState(false)
 
     function handleShowPassword() {
         setShowPassword(!showPassword)
-    }
-
-    function goToHome() {
-        setShowPassword(showPassword)
-    }
-
-    function handleCheck(event: any) {
-        if (isDisabled) {
-            event.preventDefault();
-        }
     }
 
     return (
@@ -44,17 +35,17 @@ export function Login() {
                         <div className='input_form_container'>
                             <label htmlFor="">Senha</label>
                             <input type={showPassword ? 'text' : 'password'} placeholder='Insira sua senha' />
-                            {showPassword ? <Eye size={30} className='iconPass' onClick={handleShowPassword} /> : <EyeClosed size={30} className='iconPass' onClick={handleShowPassword} />}
+                            {showPassword ? <Eye size={24} className='iconPass' onClick={handleShowPassword} /> : <EyeClosed size={24} className='iconPass' onClick={handleShowPassword} />}
                         </div>
 
-                        <NavLink to='/home' className='nav_link_button' onClick={handleCheck}>Acesse a plataforma</NavLink>
+                        <NavLink to='/home' className='nav_link_button'>Acesse a plataforma</NavLink>
 
                     </form>
                 </aside>
             </div>
 
             <div className='loginGrid'>
-                <img src={Background} alt="" />
+                <img src={Background} alt="" /> 
             </div>
         </div>
     )

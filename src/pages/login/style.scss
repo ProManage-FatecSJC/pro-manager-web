@@ -1,15 +1,19 @@
 .container {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
+
     height: 100vh;
 
     .loginGrid:nth-child(1){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
         .header_title {
             display: flex;
             align-items: center;
             justify-content: center;
-            
-            padding: 2.188rem 0 0 0;
 
             img {
                 width: 64px;
@@ -37,14 +41,13 @@
                 font-size: 2.5rem;
                 color: #000000;
 
-                padding: 1rem 0 7.313rem 0;
+                padding: 2rem 0 3rem 0;
             }
 
             form {
                 display: flex;
                 flex-direction: column;
                 width: 100%;
-                padding: 0 5rem 0 5rem;
 
                 .input_form_container {
                     display: flex;
@@ -74,7 +77,7 @@
                     }
 
                     .iconPass {
-                        margin: -2.8rem 1rem 0 0;
+                        margin: -2.5rem 1rem 0 0;
                         align-self: flex-end;
                         cursor: pointer;
                     }
@@ -108,11 +111,19 @@
     }
 
     .loginGrid:nth-child(2){
-        background-color: #6B7494;
-        border-radius: 24px 0 0 24px;
-
-        display: flex;
+        display:flex;
         justify-content: center;
         align-items: center;
+
+        padding: 0 2rem 0 2rem;
+
+        img{
+            width: 100%;
+            height: 100vh;
+        }
     }
+
+
+    //Media queries respoonsivo
+
 }
