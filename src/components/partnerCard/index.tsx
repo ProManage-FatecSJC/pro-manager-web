@@ -1,19 +1,28 @@
+import './styles.scss'
+
 type PartnerCardTypes = {
     partnerImage?: string;
     partnerResponsibilityImage?: string;
     partnerName: string;
-    partnetResponsibilityName: string;
+    partnerResponsibilityName: string;
     partnerStatus: string;
 }
 
-export function PartnerCard({partnerImage, partnerResponsibilityImage, partnerName, partnetResponsibilityName, partnerStatus}: PartnerCardTypes) {
+export function PartnerCard({partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus}: PartnerCardTypes) {
     return (
-        <div>
-            <img src={partnerImage} alt="Foto do parceiro" />
-            <h1>{partnerName}</h1>
-            <h2>{partnetResponsibilityName}</h2>
-            <img src={partnerResponsibilityImage} alt="Foto do responsável" />
+        <button className="container_card">
+            <div className='partner_img'>
+                <img src={partnerImage} alt="Foto do parceiro" />
+            </div>
 
-        </div>
+            <div className="info_card">
+                <h2>{partnerName}</h2>
+                <p>{partnerResponsibilityName} - {partnerStatus}</p>
+            </div>
+
+            <div  className='partner_responsibility_img'>
+                <img src={partnerResponsibilityImage} alt="Foto do responsável" />
+            </div>
+        </button>
     )
 }

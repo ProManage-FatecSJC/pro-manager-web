@@ -1,5 +1,6 @@
 import { FileSearch } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
+import avatar from '../../assets/images/avatar.svg';
 import './style.scss';
 
 
@@ -12,20 +13,136 @@ export function Home() {
                     <button>Adicionar parceiro</button>
                 </header>
                 <table>
-                    <thead>
-                        <tr>
-                            <PartnerCard
-                            partnerName='Fatec SJC'
-                            partnerStatus='ES em analise'
-                            partnetResponsibilityName='Vinicius Buarque'
-                            />
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+<PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
+                            <PartnerCard
+                                partnerImage={avatar}
+                                partnerResponsibilityImage={avatar}
+                                partnerName='Fatec SJC'
+                                partnerStatus='ES em analise'
+                                partnerResponsibilityName='Vinicius Buarque'
+                            />
+
                         </tr>
                     </tbody>
                 </table>
