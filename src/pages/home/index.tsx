@@ -1,10 +1,32 @@
-import { MagnifyingGlass, ArrowUp, ArrowDown } from 'phosphor-react';
+import { useEffect, useState } from 'react';
+
+import api from '../../api/api';
+import { URI } from '../../api/uri';
+
+import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
 import avatar from '../../assets/images/avatar.svg';
 import './style.scss';
+import axios from 'axios';
 
 
 export function Home() {
+    const [members, setMembers] = useState<any[]>([]);
+
+    const handleGetAll = async () => {
+        const res = await api.get(URI.PARTNER);
+        return res.data;
+    };
+
+    const getAllPartners = async () => {
+        const allPartners: [] = await handleGetAll();
+        setMembers(allPartners);
+    }
+
+    useEffect(() => {
+        getAllPartners();
+    }, [getAllPartners]);
+
     return (
         <div className="register-container">
             <main>
@@ -45,16 +67,22 @@ export function Home() {
                     </div>
                 </div>
                 <table>
-                    <tbody>
+                    {members.length === 0 && (
                         <tr>
-                            <PartnerCard
-                                partnerImage={avatar}
-                                partnerResponsibilityImage={avatar}
-                                partnerName='Fatec SJC'
-                                partnerStatus='ES em analise'
-                                partnerResponsibilityName='Vinicius Buarque'
-                            />
+                            não tem ninguem
                         </tr>
+                    )}
+                    <tbody>
+                        {members.map((member, index) => (
+                            <tr key={index}>
+                                <PartnerCard
+                                    partnerName={member.name}
+                                    partnerResponsibilityName={member.responsible}
+                                    partnerStatus={member.status}
+                                />
+                            </tr>
+                        ))
+                        }
                     </tbody>
                 </table>
             </main>
