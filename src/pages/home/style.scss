@@ -7,7 +7,7 @@
     height: calc(100vh - 90px);
 
     main {
-        width: 80%;
+        width: 60%;
         height: 80vh;
         overflow-y: auto;
 
@@ -30,12 +30,13 @@
                 display: flex;
                 justify-content: center;
 
-                width: 70%;
-                margin: 0 0 0 1rem;
+                width: 60%;
 
                 input {
                     width: 100%;
                     padding: 0.5rem 2rem;
+                    
+                    margin-right: -2.688rem;
     
                     border: none;
                     border-bottom: 2px solid #29292e;
@@ -56,22 +57,21 @@
                     }
     
                     &:focus {
-                        border: 2px solid #29292e;
+                        border: 2px solid #566395;
                         border-radius: 2rem;
                     }
                 }
 
                 .search_icon {
-                    position: relative;
-                    top: 0.3rem;
-                    left: -3rem;
-                    color: #29292e;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
             }
             
 
             button {
-                padding: 1rem 1.5rem;
+                padding: 1rem 1rem;
 
                 border: 1px solid #4C825C;
                 background: none;
@@ -126,6 +126,11 @@
                     option {
                         color: #29292e;
                         font-weight: 500;
+                    }
+
+                    &:focus {
+                        border: 2px solid #566395;
+                        border-radius: 2rem;
                     }
                 }
             }

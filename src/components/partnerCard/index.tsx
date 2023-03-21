@@ -10,7 +10,7 @@ type PartnerCardTypes = {
 
 export function PartnerCard({partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus}: PartnerCardTypes) {
     return (
-        <button className="container_card">
+        <td className="container_card">
             <div className='partner_img'>
                 <img src={partnerImage} alt="Foto do parceiro" />
             </div>
@@ -23,6 +23,6 @@ export function PartnerCard({partnerImage, partnerResponsibilityImage, partnerNa
             <div  className='partner_responsibility_img'>
                 <img src={partnerResponsibilityImage} alt="Foto do responsável" />
             </div>
-        </button>
+        </td>
     )
 }

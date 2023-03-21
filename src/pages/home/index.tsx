@@ -1,31 +1,28 @@
 import { useEffect, useState } from 'react';
 
-import api from '../../api/api';
-import { URI } from '../../api/uri';
-
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
-import avatar from '../../assets/images/avatar.svg';
 import './style.scss';
-import axios from 'axios';
+import { URI } from '../../api/uri';
+import api from '../../api/api';
 
+interface Partner {
+    id: number;
+    name: string;
+    trade_name: string;
+    status: string;
+}
 
 export function Home() {
-    const [members, setMembers] = useState<any[]>([]);
-
-    const handleGetAll = async () => {
-        const res = await api.get(URI.PARTNER);
-        return res.data;
-    };
-
-    const getAllPartners = async () => {
-        const allPartners: [] = await handleGetAll();
-        setMembers(allPartners);
-    }
-
+    const [partner, setPartner] = useState<Partner[]>([]);
+    
     useEffect(() => {
-        getAllPartners();
-    }, [getAllPartners]);
+        api
+        .get(URI.PARTNER)
+        .then((response) => {
+            setPartner(response.data);
+        })
+    }, []);
 
     return (
         <div className="register-container">
@@ -34,7 +31,9 @@ export function Home() {
                     <h1>Parceiros</h1>
                     <div className='search_bar_container'>
                         <input placeholder='Pesquisar parceiro' />
-                        <MagnifyingGlass size={32} className='search_icon' />
+                        <div className="search_icon">
+                            <MagnifyingGlass size={24} />
+                        </div>
                     </div>
                     <button>Adicionar parceiro</button>
                 </header>
@@ -67,25 +66,21 @@ export function Home() {
                     </div>
                 </div>
                 <table>
-                    {members.length === 0 && (
-                        <tr>
-                            não tem ninguem
-                        </tr>
-                    )}
                     <tbody>
-                        {members.map((member, index) => (
-                            <tr key={index}>
+                            <tr>
+                            {partner.map((member, index) => (
                                 <PartnerCard
+                                    key={index}
                                     partnerName={member.name}
-                                    partnerResponsibilityName={member.responsible}
+                                    partnerResponsibilityName={member.trade_name}
                                     partnerStatus={member.status}
                                 />
+                                ))}
                             </tr>
-                        ))
-                        }
                     </tbody>
                 </table>
             </main>
         </div>
     )
 }
+
