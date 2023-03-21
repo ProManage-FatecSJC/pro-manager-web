@@ -3,7 +3,7 @@
     grid-template-columns: 1fr 1fr;
     height: 100vh;
 
-    .loginGrid:nth-child(1){
+    .loginGrid:nth-child(1) {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -24,7 +24,7 @@
                     width: 64px;
                     height: 64px;
                 }
-    
+
                 h1 {
                     font-family: 'Lato', sans-serif;
                     font-size: 1rem;
@@ -37,7 +37,7 @@
                 font-weight: 500;
                 font-size: 2.5rem;
             }
-            
+
         }
 
         aside {
@@ -77,7 +77,7 @@
                         padding: 1rem;
                         border: 1px solid #D9D9D9;
                         border-radius: 0.5rem;
-                        
+
                         font-size: 1rem;
 
                         outline: none;
@@ -106,7 +106,7 @@
             padding: 1rem;
 
             width: 100%;
-            
+
             border-radius: 0.5rem;
             background: #00688C;
             text-align: center;
@@ -122,14 +122,14 @@
         }
     }
 
-    .loginGrid:nth-child(2){
-        display:flex;
+    .loginGrid:nth-child(2) {
+        display: flex;
         justify-content: center;
         align-items: center;
 
         padding: 0 2rem 0 2rem;
 
-        img{
+        img {
             width: 100%;
             height: 100vh;
         }
@@ -138,4 +138,41 @@
 
     //Media queries respoonsivo
 
+    @media screen and (max-width: 1270px) {
+        .loginGrid:nth-child(1) {
+            padding: 0 3rem 0 3rem;
+        }
+    }
+
+    @media screen and (max-width: 950px) {
+        display: block;
+
+        .loginGrid:nth-child(1) {
+            height: 100%;
+
+            padding: 0 1rem 0 1rem;
+        }
+
+        .header_title {
+            margin-bottom: 2.5rem;
+        }
+
+        .loginGrid:nth-child(2) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 410px) {
+        .loginGrid:nth-child(1) {
+            .header_title {
+                .header_logo {
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                }
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
 }
