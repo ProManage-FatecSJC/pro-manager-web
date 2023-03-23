@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "../default";
-import { Login, Home} from "../pages";
+import { Login, Home } from "../pages";
 
 
 export function AppRoutes() {
