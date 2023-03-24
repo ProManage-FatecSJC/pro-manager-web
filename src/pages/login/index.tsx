@@ -25,7 +25,7 @@ export function Login() {
                     <div className="head_line">
                         <h1>Acesse a plataforma</h1>
                         <p>
-                            Faça login ou cadastre-se para começar a organizar seus clientes ainda hoje.
+                            Faça login para começar a organizar seus clientes ainda hoje.
                         </p>
                     </div>
 
@@ -37,7 +37,8 @@ export function Login() {
                                 type="email"
                                 name="name"
                                 placeholder='Digite seu e-mail'
-                            /*required*/
+                                required
+                                disabled
                             />
                         </div>
 
@@ -53,6 +54,7 @@ export function Login() {
                                 type={showPassword ? 'text' : 'password'} 
                                 name="password"
                                 placeholder='Digite sua senha'
+                                disabled
                             />
                             
                             {showPassword ?
@@ -71,11 +73,6 @@ export function Login() {
                         </div>
 
                         <button type="submit" onClick={() => navigate('/home')}>Entrar</button>
-
-                        <div className="create_account">
-                            Ainda não tem uma conta?
-                            <a href="#"> Cadastre-se </a>
-                        </div>
                     </form>
                 </main>
             </div>
