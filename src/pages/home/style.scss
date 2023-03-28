@@ -17,7 +17,7 @@
             align-items: center;
 
             width: 100%;
-            padding: 1.5rem 1rem 0.5rem 1rem;
+            padding: 2.4rem 1.6rem 0.8rem 1.6rem;
 
             border-bottom: 2px solid #e2e2e2;
 
@@ -34,9 +34,9 @@
 
                 input {
                     width: 100%;
-                    padding: 0.5rem 2rem;
+                    padding: 0.8rem 3.2rem;
                     
-                    margin-right: -2.688rem;
+                    margin-right: -4.3rem;
     
                     border: none;
                     border-bottom: 2px solid #29292e;
@@ -47,18 +47,18 @@
                     color: #29292e;
                     font-weight: 500;
     
-                    font-size: 1rem;
+                    font-size: 1.6rem;
     
                     transition: all 0.2s;
     
                     &::placeholder {
-                        font-size: 1rem;
+                        font-size: 1.6rem;
                         color: #7A736E;
                     }
     
                     &:focus {
                         border: 2px solid #566395;
-                        border-radius: 2rem;
+                        border-radius: 3.2rem;
                     }
                 }
 
@@ -71,12 +71,12 @@
             
 
             button {
-                padding: 1rem 1rem;
+                padding: 1.2rem 1.6rem;
 
                 border: 1px solid #4C825C;
                 background: none;
 
-                border-radius: 0.5rem;
+                border-radius: 0.8rem;
 
                 color: #4c825c;
                 font-weight: 500;
@@ -96,17 +96,17 @@
             justify-content: flex-end;
             align-items: center;
 
-            padding: 1rem 1rem 0.5rem 1rem;
+            padding: 1.6rem 1.6rem 0.8rem 1.6rem;
 
             .filter {
                 label {
                     font-weight: 500;
                     color: #6B7494;
-                    margin-right: 0.5rem;
+                    margin-right: 0.8rem;
                 }
 
                 select {
-                    padding: 0.5rem 1rem;
+                    padding: 0.8rem 1.6rem;
 
                     border: none;
                     border-bottom: 2px solid #29292e;
@@ -117,7 +117,7 @@
                     color: #29292e;
                     font-weight: 500;
 
-                    font-size: 1rem;
+                    font-size: 1.6rem;
 
                     transition: all 0.2s;
 
@@ -129,37 +129,38 @@
                     }
 
                     &:focus {
-                        border: 2px solid #566395;
-                        border-radius: 2rem;
+                        border: 2px solid #29292e;
+                        border-top-right-radius: 1.6rem;
+                        border-top-left-radius: 1.6rem;
                     }
                 }
             }
 
             .filter:nth-child(1) {
-                margin-right: 2rem;
+                margin-right: 3.2rem;
             }
         }
 
         table {
-            margin-top: 1rem;
+            margin-top: 1.6rem;
             width: 100%;
             height: 60vh;
             border-collapse: collapse;
 
             tbody {
                 border-bottom: 2px solid #e2e2e2;
-                padding: 1rem;
+                padding: 1.6rem;
 
                 tr {
                     display: grid;
                     grid-template-columns: 1fr 1fr;
-                    grid-gap: 1rem;
+                    grid-gap: 1.6rem;
 
                     justify-content: center;
                     width: 100%;
 
                     td {
-                        padding: 1rem;
+                        padding: 1.6rem;
                         text-align: center;
                     }
                 }

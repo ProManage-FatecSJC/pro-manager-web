@@ -5,6 +5,7 @@ import { PartnerCard } from '../../components/partnerCard';
 import './style.scss';
 import { URI } from '../../api/uri';
 import api from '../../api/api';
+import { ModalRegister } from '../../components/modalRegister';
 
 interface Partner {
     id: number;
@@ -14,6 +15,7 @@ interface Partner {
 }
 
 export function Home() {
+    const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
     
     useEffect(() => {
@@ -35,7 +37,7 @@ export function Home() {
                             <MagnifyingGlass size={24} />
                         </div>
                     </div>
-                    <button>Adicionar parceiro</button>
+                    <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar parceiro</button>
                 </header>
                 <div className="filter_container">
                     <div className="filter">
@@ -80,6 +82,11 @@ export function Home() {
                     </tbody>
                 </table>
             </main>
+
+            <ModalRegister 
+                isOpen={isRegisterModalOpen}
+                setModalOpen={() => setIsRegisterModalOpen(!isRegisterModalOpen)}
+            />
         </div>
     )
 }
