@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import { MagnifyingGlass } from 'phosphor-react';
-import { PartnerCard } from '../../components/partnerCard';
-import './style.scss';
 import { URI } from '../../api/uri';
 import api from '../../api/api';
+
+import { MagnifyingGlass } from 'phosphor-react';
+import { PartnerCard } from '../../components/partnerCard';
 import { ModalRegister } from '../../components/modalRegister';
+import empty_image from '../../assets/images/Ilustração.svg'
+
+import './style.scss';
 
 interface Partner {
     id: number;
@@ -17,13 +20,13 @@ interface Partner {
 export function Home() {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
-    
+
     useEffect(() => {
         api
-        .get(URI.PARTNER)
-        .then((response) => {
-            setPartner(response.data);
-        })
+            .get(URI.PARTNER)
+            .then((response) => {
+                setPartner(response.data);
+            })
     }, []);
 
     return (
@@ -68,8 +71,19 @@ export function Home() {
                     </div>
                 </div>
                 <table>
+                    {partner.length === 0 && (
+                        <tbody className='empty_table'>
+                            <div className="empty_content">
+                                <img src={empty_image} alt="" />
+                                <div className="empty_description">
+                                    <h1>Nenhum parceiro cadastrado no momento</h1>
+                                    <p>clique em adicionar parceiro para poder visualiza-lo.</p>
+                                </div>
+                            </div>
+                        </tbody>
+                    )}
                     <tbody>
-                            <tr>
+                        <tr>
                             {partner.map((member, index) => (
                                 <PartnerCard
                                     key={index}
@@ -77,13 +91,13 @@ export function Home() {
                                     partnerResponsibilityName={member.trade_name}
                                     partnerStatus={member.status}
                                 />
-                                ))}
-                            </tr>
+                            ))}
+                        </tr>
                     </tbody>
                 </table>
             </main>
 
-            <ModalRegister 
+            <ModalRegister
                 isOpen={isRegisterModalOpen}
                 setModalOpen={() => setIsRegisterModalOpen(!isRegisterModalOpen)}
             />
