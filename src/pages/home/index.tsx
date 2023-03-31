@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { URI } from '../../api/uri';
 import api from '../../api/api';
+import unidecode from 'unidecode';
 
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
@@ -20,6 +21,7 @@ interface Partner {
 export function Home() {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
+    const [searchTerm, setSearchTerm] = useState<string>('');
 
     useEffect(() => {
         api
@@ -29,13 +31,20 @@ export function Home() {
             })
     }, []);
 
+    const filteredPartner = partner.filter((p) => {
+        const nameMatch = unidecode(p.name).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
+        const statusMatch = unidecode(p.status).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
+        const responsibleNameMatch = unidecode(p.trade_name).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
+        return nameMatch || statusMatch || responsibleNameMatch;
+      });
+
     return (
         <div className="register-container">
             <main>
                 <header className='table_header'>
                     <h1>Parceiros</h1>
                     <div className='search_bar_container'>
-                        <input placeholder='Pesquisar parceiro' />
+                        <input placeholder='Pesquisar parceiro' onChange={(e) => setSearchTerm(e.target.value)} />
                         <div className="search_icon">
                             <MagnifyingGlass size={24} />
                         </div>
@@ -71,7 +80,7 @@ export function Home() {
                     </div>
                 </div>
                 <table>
-                    {partner.length === 0 && (
+                    {filteredPartner.length === 0 ? (
                         <tbody className='empty_table'>
                             <div className="empty_content">
                                 <img src={empty_image} alt="" />
@@ -81,19 +90,20 @@ export function Home() {
                                 </div>
                             </div>
                         </tbody>
+                    ) : (
+                        <tbody>
+                            <tr>
+                                {filteredPartner.map((member, index) => (
+                                    <PartnerCard
+                                        key={index}
+                                        partnerName={member.name}
+                                        partnerResponsibilityName={member.trade_name}
+                                        partnerStatus={member.status}
+                                    />
+                                ))}
+                            </tr>
+                        </tbody>
                     )}
-                    <tbody>
-                        <tr>
-                            {partner.map((member, index) => (
-                                <PartnerCard
-                                    key={index}
-                                    partnerName={member.name}
-                                    partnerResponsibilityName={member.trade_name}
-                                    partnerStatus={member.status}
-                                />
-                            ))}
-                        </tr>
-                    </tbody>
                 </table>
             </main>
 
@@ -104,4 +114,3 @@ export function Home() {
         </div>
     )
 }
-

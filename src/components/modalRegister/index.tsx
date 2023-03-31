@@ -9,6 +9,7 @@ type ModalProps = {
 
 export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
 
+
     if (isOpen) {
         return (
             <div className='modal_wrapper'>
@@ -21,7 +22,7 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                 <p>Coloque os dados do seu parceiro</p>
                             </div>
                         </div>
-                        <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit"/>
+                        <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit" />
                     </div>
                     <form action="">
                         <div className="input_wrapper">
@@ -36,10 +37,10 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                         </div>
 
                         <div className="input_wrapper">
-                            <label htmlFor="privacyPartner">Publico ou privado</label>
+                            <label htmlFor="privacyPartner">Público ou privado</label>
                             <select>
                                 <option>Selecione</option>
-                                <option value="public">Publico</option>
+                                <option value="public">Público</option>
                                 <option value="private">Privado</option>
                             </select>
                         </div>
@@ -103,6 +104,40 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                 placeholder='Digite o nome do responsável'
                                 required
                             />
+                        </div>
+
+                        <div className="input_wrapper">
+                            <label htmlFor="typePartner">Estado em que se encontra</label>
+                            <select>
+                                <option>Selecione</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
                         </div>
                     </form>
                     <button type="submit" className="btn_submit">Cadastrar parceiro</button>
