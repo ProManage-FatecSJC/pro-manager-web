@@ -36,7 +36,7 @@ export function Home() {
         const statusMatch = unidecode(p.status).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
         const responsibleNameMatch = unidecode(p.trade_name).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
         return nameMatch || statusMatch || responsibleNameMatch;
-      });
+    });
 
     return (
         <div className="register-container">
