@@ -9,12 +9,13 @@ import { ModalRegister } from '../../components/modalRegister';
 import empty_image from '../../assets/images/Ilustração.svg'
 
 import './style.scss';
+import { EStatus } from '../../enum/EStatus';
 
 interface Partner {
     id: number;
     name: string;
     intermediateResponsible: string;
-    status: string;
+    status: number;
 }
 
 export function Home() {
@@ -53,18 +54,18 @@ export function Home() {
                         <label htmlFor="status">Status</label>
                         <select name="status" id="status">
                             <option value="all">Todos</option>
-                            <option value="active">Em prospecção</option>
-                            <option value="active">Primeiro contato feito</option>
-                            <option value="active">Primeira reunião marcada/realizada</option>
-                            <option value="active">Documentação enviada/em análise (Parceiro)</option>
-                            <option value="active">Documentação devolvida (Em análise Academy)</option>
-                            <option value="active">Documentação devolvida (Em análise Legal)</option>
-                            <option value="active">Documentação analisada devolvida (Parceiro)</option>
-                            <option value="active">Em preparação de Executive Sumary (Academy)</option>
-                            <option value="active">ES em análise (Legal)</option>
-                            <option value="active">ES em análise (Academy Global)</option>
-                            <option value="active">Pronto para assinatura</option>
-                            <option value="active">Parceria Firmada</option>
+                            <option value="0">Em prospecção</option>
+                            <option value="1">Primeiro contato feito</option>
+                            <option value="2">Primeira reunião marcada/realizada</option>
+                            <option value="3">Documentação enviada/em análise (Parceiro)</option>
+                            <option value="4">Documentação devolvida (Em análise Academy)</option>
+                            <option value="5">Documentação devolvida (Em análise Legal)</option>
+                            <option value="6">Documentação analisada devolvida (Parceiro)</option>
+                            <option value="7">Em preparação de Executive Sumary (Academy)</option>
+                            <option value="8">ES em análise (Legal)</option>
+                            <option value="9">ES em análise (Academy Global)</option>
+                            <option value="10">Pronto para assinatura</option>
+                            <option value="11">Parceria Firmada</option>
                         </select>
                     </div>
                     <div className="filter">
@@ -95,7 +96,7 @@ export function Home() {
                                         key={index}
                                         partnerName={member.name}
                                         partnerResponsibilityName={member.intermediateResponsible}
-                                        partnerStatus={member.status}
+                                        partnerStatus={EStatus[member.status]}
                                     />
                                 ))
                             )}
