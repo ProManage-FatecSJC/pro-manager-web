@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { URI } from '../../api/uri';
 import api from '../../api/api';
-import unidecode from 'unidecode';
 
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
@@ -14,7 +13,7 @@ import './style.scss';
 interface Partner {
     id: number;
     name: string;
-    trade_name: string;
+    intermediateResponsible: string;
     status: string;
 }
 
@@ -30,13 +29,6 @@ export function Home() {
                 setPartner(response.data);
             })
     }, []);
-
-    const filteredPartner = partner.filter((p) => {
-        const nameMatch = unidecode(p.name).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
-        const statusMatch = unidecode(p.status).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
-        const responsibleNameMatch = unidecode(p.trade_name).toLowerCase().includes(unidecode(searchTerm).toLowerCase());
-        return nameMatch || statusMatch || responsibleNameMatch;
-    });
 
     return (
         <div className="register-container">
@@ -80,30 +72,30 @@ export function Home() {
                     </div>
                 </div>
                 <table>
-                    {filteredPartner.length === 0 ? (
-                        <tbody className='empty_table'>
-                            <div className="empty_content">
-                                <img src={empty_image} alt="" />
-                                <div className="empty_description">
-                                    <h1>Nenhum parceiro cadastrado no momento</h1>
-                                    <p>clique em adicionar parceiro para poder visualiza-lo.</p>
-                                </div>
-                            </div>
-                        </tbody>
-                    ) : (
-                        <tbody>
-                            <tr>
-                                {filteredPartner.map((member, index) => (
+                    <tbody>
+                        <tr>
+                            {partner.length === 0 ? (
+                                <td colSpan={3} className='empty_table'>
+                                    <div className="empty_content">
+                                        <img src={empty_image} alt="" />
+                                        <div className="empty_description">
+                                            <h1>Nenhum parceiro cadastrado no momento</h1>
+                                            <p>clique em adicionar parceiro para poder visualiza-lo.</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            ) : (
+                                partner.map((member, index) => (
                                     <PartnerCard
                                         key={index}
                                         partnerName={member.name}
-                                        partnerResponsibilityName={member.trade_name}
+                                        partnerResponsibilityName={member.intermediateResponsible}
                                         partnerStatus={member.status}
                                     />
-                                ))}
-                            </tr>
-                        </tbody>
-                    )}
+                                ))
+                            )}
+                        </tr>
+                    </tbody>
                 </table>
             </main>
 

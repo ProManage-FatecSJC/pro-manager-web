@@ -24,10 +24,10 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
         name: partnerName,
         privacy: partnerPrivacy,
         type: partnerType,
-        amount: partnerAmount,
+        membersQuantity: partnerAmount,
         status: partnerStatus,
-        contact: partnerContact,
-        responsible: partnerResponsible,
+        telephone: partnerContact,
+        intermediateResponsible: partnerResponsible,
         state: partnerState
     }
 
@@ -73,47 +73,51 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                     <form onSubmit={handleNewPartner}>
                         <div className="form_content_wrapper">
                             <div className="input_wrapper">
-                                <label htmlFor="namePartner">Nome do parceiro</label>
+                                <label htmlFor="name">Nome do parceiro</label>
                                 <input
-                                    id="namePartner"
+                                    id="name"
                                     type="text"
-                                    name="namePartner"
+                                    name="name"
                                     placeholder='Digite o nome do parceiro'
-                                    onChange={event => setPartnerName(event.target.value)}
+                                    onChange={e => setPartnerName(e.target.value)}
                                     required
                                 />
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="privacyPartner">Público ou privado</label>
+                                <label htmlFor="privacy">Público ou privado</label>
                                 <select
-                                    onChange={event => setPartnerPrivacy(event.target.value)}
+                                    name="privacy"
+                                    id="privacy"
+                                    onChange={e => setPartnerPrivacy(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="public">Público</option>
-                                    <option value="private">Privado</option>
+                                    <option value="Publico">Público</option>
+                                    <option value="Privado">Privado</option>
                                 </select>
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="typePartner">Tipo do parceiro</label>
+                                <label htmlFor="type">Tipo do parceiro</label>
                                 <select
-                                    onChange={event => setPartnerType(event.target.value)}
+                                    name="type"
+                                    id="type"
+                                    onChange={e => setPartnerType(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="public">Único</option>
-                                    <option value="private">Multiplo</option>
+                                    <option value="Único">Único</option>
+                                    <option value="Privado">Multiplo</option>
                                 </select>
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="amountPartner">Quantidade de membros</label>
+                                <label htmlFor="membersQuantity">Quantidade de membros</label>
                                 <input
-                                    id="amountPartner"
+                                    id="membersQuantity"
                                     type="text"
-                                    name="amountPartner"
+                                    name="membersQuantity"
                                     placeholder='Digite a quantidade de membros'
-                                    onChange={event => setPartnerAmount(event.target.value)}
+                                    onChange={e => setPartnerAmount(e.target.value)}
                                     required
                                 />
                             </div>
@@ -123,7 +127,7 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                 <select
                                     name="status"
                                     id="status"
-                                    onChange={event => setPartnerStatus(event.target.value)}
+                                    onChange={e => setPartnerStatus(e.target.value)}
                                 >
                                     <option value="active">Selecione</option>
                                     <option value="active">Em prospecção</option>
@@ -142,33 +146,35 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="contactPartner">Número de contato</label>
+                                <label htmlFor="telephone">Número de contato</label>
                                 <input
-                                    id="contactPartner"
+                                    id="telephone"
                                     type="text"
-                                    name="contactPartner"
+                                    name="telephone"
                                     placeholder='Digite o número de contato'
-                                    onChange={event => setPartnerContact(event.target.value)}
+                                    onChange={e => setPartnerContact(e.target.value)}
                                     required
                                 />
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="responsiblePartner">Responsável</label>
+                                <label htmlFor="intermediateResponsible">Responsável</label>
                                 <input
-                                    id="responsiblePartner"
+                                    id="intermediateResponsible"
                                     type="text"
-                                    name="responsiblePartner"
+                                    name="intermediateResponsible"
+                                    onChange={e => setPartnerResponsible(e.target.value)}
                                     placeholder='Digite o nome do responsável'
-                                    onChange={event => setPartnerResponsible(event.target.value)}
                                     required
                                 />
                             </div>
 
                             <div className="input_wrapper">
-                                <label htmlFor="typePartner">Estado em que se encontra</label>
+                                <label htmlFor="state">Estado em que se encontra</label>
                                 <select
-                                    onChange={event => setPartnerState(event.target.value)}
+                                    name="state"
+                                    id="state"
+                                    onChange={e => setPartnerState(e.target.value)}                                
                                 >
                                     <option>Selecione</option>
                                     <option value="AC">Acre</option>
@@ -201,7 +207,6 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                 </select>
                             </div>
                         </div>
-
                         <button type="submit" className="btn_submit">Cadastrar parceiro</button>
                     </form>
 
