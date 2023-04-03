@@ -3,6 +3,7 @@ import './styles.scss';
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
 import { URI } from '../../api/uri';
+import { useNavigate } from 'react-router-dom';
 
 type ModalProps = {
     isOpen: boolean;
@@ -19,11 +20,13 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
     const [partnerContact, setPartnerContact] = useState('');
     const [partnerResponsible, setPartnerResponsible] = useState('');
     const [partnerState, setPartnerState] = useState('');
+    const navigate = useNavigate()
+    const token = localStorage.getItem('token')
 
     let partner = {
         name: partnerName,
-        privacy: partnerPrivacy,
-        type: partnerType,
+        privacy: parseInt(partnerPrivacy),
+        type: parseInt(partnerType),
         membersQuantity: partnerAmount,
         status: partnerStatus,
         telephone: partnerContact,
@@ -34,9 +37,15 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
     const handleNewPartner = async (e: any) => {
         e.preventDefault();
         api.
-        post(URI.PARTNER, partner)
+        post(URI.PARTNER, partner, {
+            headers: {
+                Authorization: token
+            }
+        })
         .then(response => {
-            console.log(response.data);
+            if(response.status == 200){
+                window.location.reload()
+            }
         })
         .catch(error => {
             console.log(error);
@@ -92,8 +101,8 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                     onChange={e => setPartnerPrivacy(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="Publico">Público</option>
-                                    <option value="Privado">Privado</option>
+                                    <option value="0">Público</option>
+                                    <option value="1">Privado</option>
                                 </select>
                             </div>
 
@@ -105,8 +114,8 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                     onChange={e => setPartnerType(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="Único">Único</option>
-                                    <option value="Privado">Multiplo</option>
+                                    <option value="0">Único</option>
+                                    <option value="1">Multiplo</option>
                                 </select>
                             </div>
 
@@ -129,19 +138,19 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
                                     id="status"
                                     onChange={e => setPartnerStatus(e.target.value)}
                                 >
-                                    <option value="active">Selecione</option>
-                                    <option value="active">Em prospecção</option>
-                                    <option value="active">Primeiro contato feito</option>
-                                    <option value="active">Primeira reunião marcada/realizada</option>
-                                    <option value="active">Documentação enviada/em análise (Parceiro)</option>
-                                    <option value="active">Documentação devolvida (Em análise Academy)</option>
-                                    <option value="active">Documentação devolvida (Em análise Legal)</option>
-                                    <option value="active">Documentação analisada devolvida (Parceiro)</option>
-                                    <option value="active">Em preparação de Executive Sumary (Academy)</option>
-                                    <option value="active">ES em análise (Legal)</option>
-                                    <option value="active">ES em análise (Academy Global)</option>
-                                    <option value="active">Pronto para assinatura</option>
-                                    <option value="active">Parceria Firmada</option>
+                                    <option value="0">Selecione</option>
+                                    <option value="1">Em prospecção</option>
+                                    <option value="2">Primeiro contato feito</option>
+                                    <option value="3">Primeira reunião marcada/realizada</option>
+                                    <option value="4">Documentação enviada/em análise (Parceiro)</option>
+                                    <option value="5">Documentação devolvida (Em análise Academy)</option>
+                                    <option value="6">Documentação devolvida (Em análise Legal)</option>
+                                    <option value="7">Documentação analisada devolvida (Parceiro)</option>
+                                    <option value="8">Em preparação de Executive Sumary (Academy)</option>
+                                    <option value="9">ES em análise (Legal)</option>
+                                    <option value="10">ES em análise (Academy Global)</option>
+                                    <option value="11">Pronto para assinatura</option>
+                                    <option value="12">Parceria Firmada</option>
                                 </select>
                             </div>
 

@@ -21,10 +21,15 @@ export function Home() {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
         api
-            .get(URI.PARTNER)
+            .get(URI.PARTNER, {
+                headers: {
+                    Authorization: token
+                }
+            })
             .then((response) => {
                 setPartner(response.data);
             })

@@ -1,4 +1,5 @@
 export enum URI {
     PARTNER = "partners",
-    MEMBERS = "members"
+    MEMBERS = "members",
+    LOGIN = "login"
 }

@@ -6,13 +6,33 @@ import { Eye, EyeClosed } from 'phosphor-react';
 
 import './style.scss'
 import { useNavigate } from 'react-router-dom';
+import api from '../../api/api';
+import { URI } from '../../api/uri';
 
 export function Login() {
     const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
     const navigate = useNavigate();
 
     function handleShowPassword() {
         setShowPassword(!showPassword);
+    }
+
+    async function handleLogin(e: any) {
+        e.preventDefault()
+        let login = {
+            email,
+            password
+        }
+        api.post(URI.LOGIN, login).then(response => {
+            if(response.status == 200){
+                localStorage.setItem('token', 'Bearer ' + response.data.token)
+                navigate('/home')
+            } else {
+                throw new Error('Erro ao efetuar login')
+            }
+        })
     }
     
     return (
@@ -38,7 +58,7 @@ export function Login() {
                                 name="name"
                                 placeholder='Digite seu e-mail'
                                 required
-                                disabled
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
@@ -54,7 +74,7 @@ export function Login() {
                                 type={showPassword ? 'text' : 'password'} 
                                 name="password"
                                 placeholder='Digite sua senha'
-                                disabled
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             
                             {showPassword ?
@@ -72,7 +92,7 @@ export function Login() {
                             )}
                         </div>
 
-                        <button type="submit" onClick={() => navigate('/home')}>Entrar</button>
+                        <button type="submit" onClick={async (e) => await handleLogin(e)}>Entrar</button>
                     </form>
                 </main>
             </div>
