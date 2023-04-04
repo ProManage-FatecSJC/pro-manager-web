@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
+import diacritics from 'diacritics';
 
 import { URI } from '../../api/uri';
 import api from '../../api/api';
+import { EStatus } from '../../enum/EStatus';
 
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
 import { ModalRegister } from '../../components/modalRegister';
-import empty_image from '../../assets/images/Ilustração.svg'
+import mock_avatar from '../../assets/images/avatar.svg';
+import mock_avatar_2 from '../../assets/images/avatar_2.svg';
+import empty_image from '../../assets/images/Ilustração.svg';
 
 import './style.scss';
-import { EStatus } from '../../enum/EStatus';
 
 interface Partner {
     id: number;
@@ -23,6 +26,19 @@ export function Home() {
     const [partner, setPartner] = useState<Partner[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const token = localStorage.getItem('token')
+    const [filteredPartner, setFilteredPartner] = useState<Partner[]>([]);
+
+    useEffect(() => {
+        setFilteredPartner(
+            partner.filter(
+                (p) =>
+                    diacritics
+                        .remove(p.name)
+                        .toLowerCase()
+                        .includes(diacritics.remove(searchTerm).toLowerCase())
+            )
+        );
+    }, [partner, searchTerm]);
 
     useEffect(() => {
         api
@@ -80,8 +96,8 @@ export function Home() {
                 <table>
                     <tbody>
                         <tr>
-                            {partner.length === 0 ? (
-                                <td colSpan={3} className='empty_table'>
+                            {filteredPartner.length === 0 ? (
+                                <td colSpan={4} className='empty_table'>
                                     <div className="empty_content">
                                         <img src={empty_image} alt="" />
                                         <div className="empty_description">
@@ -91,13 +107,17 @@ export function Home() {
                                     </div>
                                 </td>
                             ) : (
-                                partner.map((member, index) => (
+                                filteredPartner.map((member, index) => (
+
                                     <PartnerCard
                                         key={index}
                                         partnerName={member.name}
                                         partnerResponsibilityName={member.intermediateResponsible}
                                         partnerStatus={EStatus[member.status]}
+                                        partnerImage={mock_avatar}
+                                        partnerResponsibilityImage={mock_avatar_2}
                                     />
+
                                 ))
                             )}
                         </tr>
