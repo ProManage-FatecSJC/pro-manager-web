@@ -24,21 +24,40 @@ interface Partner {
 export function Home() {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
+
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const token = localStorage.getItem('token')
     const [filteredPartner, setFilteredPartner] = useState<Partner[]>([]);
+    const token = localStorage.getItem('token')
+    const [statusFilter, setStatusFilter] = useState('all');
+    const [alphaOrderFilter, setAlphaOrderFilter] = useState('all');
 
     useEffect(() => {
-        setFilteredPartner(
-            partner.filter(
-                (p) =>
-                    diacritics
-                        .remove(p.name)
-                        .toLowerCase()
-                        .includes(diacritics.remove(searchTerm).toLowerCase())
-            )
+        let filteredPartners = partner;
+
+        // filter by status if a status is selected
+        if (statusFilter !== 'all') {
+            const status = parseInt(statusFilter);
+            filteredPartners = filteredPartners.filter(p => p.status === status);
+        }
+
+        // sort by alphabetical order if an option is selected
+        if (alphaOrderFilter === 'ascending') {
+            filteredPartners.sort((a, b) => a.name.localeCompare(b.name));
+        } else if (alphaOrderFilter === 'descending') {
+            filteredPartners.sort((a, b) => b.name.localeCompare(a.name));
+        }
+
+        // filter by search term
+        filteredPartners = filteredPartners.filter(
+            p =>
+                diacritics
+                    .remove(p.name)
+                    .toLowerCase()
+                    .includes(diacritics.remove(searchTerm).toLowerCase())
         );
-    }, [partner, searchTerm]);
+
+        setFilteredPartner(filteredPartners);
+    }, [partner, searchTerm, statusFilter, alphaOrderFilter]);
 
     useEffect(() => {
         api
@@ -68,7 +87,12 @@ export function Home() {
                 <div className="filter_container">
                     <div className="filter">
                         <label htmlFor="status">Status</label>
-                        <select name="status" id="status">
+                        <select
+                            name="status"
+                            id="status"
+                            value={statusFilter}
+                            onChange={e => setStatusFilter(e.target.value)}
+                        >
                             <option value="all">Todos</option>
                             <option value="0">Em prospecção</option>
                             <option value="1">Primeiro contato feito</option>
@@ -85,11 +109,16 @@ export function Home() {
                         </select>
                     </div>
                     <div className="filter">
-                        <label htmlFor="status">Ordem alfabética</label>
-                        <select name="status" id="status">
-                            <option value="all">Todos</option>
-                            <option value="active">De A a Z</option>
-                            <option value="active">De Z a A</option>
+                        <label htmlFor="alphaOrder">Ordem alfabética</label>
+                        <select
+                            name="alphaOrder"
+                            id="alphaOrder"
+                            value={alphaOrderFilter}
+                            onChange={e => setAlphaOrderFilter(e.target.value)}
+                        >
+                            <option value="all">Selecione</option>
+                            <option value="ascending">De A a Z</option>
+                            <option value="descending">De Z a A</option>
                         </select>
                     </div>
                 </div>
