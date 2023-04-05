@@ -122,36 +122,34 @@ export function Home() {
                         </select>
                     </div>
                 </div>
-                <table>
-                    <tbody>
-                        <tr>
-                            {filteredPartner.length === 0 ? (
-                                <td colSpan={4} className='empty_table'>
-                                    <div className="empty_content">
-                                        <img src={empty_image} alt="" />
-                                        <div className="empty_description">
-                                            <h1>Nenhum parceiro cadastrado no momento</h1>
-                                            <p>clique em adicionar parceiro para poder visualiza-lo.</p>
-                                        </div>
-                                    </div>
-                                </td>
-                            ) : (
-                                filteredPartner.map((member, index) => (
-
-                                    <PartnerCard
-                                        key={index}
-                                        partnerName={member.name}
-                                        partnerResponsibilityName={member.intermediateResponsible}
-                                        partnerStatus={EStatus[member.status]}
-                                        partnerImage={mock_avatar}
-                                        partnerResponsibilityImage={mock_avatar_2}
-                                    />
-
-                                ))
-                            )}
-                        </tr>
-                    </tbody>
-                </table>
+                {
+                    filteredPartner.length === 0 ? (
+                        <div className="empty_content">
+                            <img src={empty_image} alt="" />
+                            <div className="empty_description">
+                                <h1>Nenhum parceiro cadastrado no momento</h1>
+                                <p>clique em adicionar parceiro para poder visualiza-lo.</p>
+                            </div>
+                        </div>
+                    ) : (
+                        <table>
+                            <tbody>
+                                <tr>
+                                    {filteredPartner.map((member, index) => (
+                                        <PartnerCard
+                                            key={index}
+                                            partnerName={member.name}
+                                            partnerResponsibilityName={member.intermediateResponsible}
+                                            partnerStatus={EStatus[member.status]}
+                                            partnerImage={mock_avatar}
+                                            partnerResponsibilityImage={mock_avatar_2}
+                                        />
+                                    ))}
+                                </tr>
+                            </tbody>
+                        </table>
+                    )
+                }
             </main>
 
             <ModalRegister
