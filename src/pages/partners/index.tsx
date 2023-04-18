@@ -21,7 +21,7 @@ interface Partner {
     status: number;
 }
 
-export function Home() {
+export function Partners() {
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
 

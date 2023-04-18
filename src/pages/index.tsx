@@ -1,2 +1,2 @@
-export * from './home';
+export * from './partners';
 export * from './login';
