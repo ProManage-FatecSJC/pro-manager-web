@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Highcharts from 'highcharts';
+
 
 import './style.scss'
 
@@ -7,16 +9,50 @@ export function Dashboard(){
 
     const navigate = useNavigate ()
     const [userName, setUserName] = useState('')
+    const chartRef = useRef(null);
+    const chartRef2 = useRef(null)
 
-    const getName = () => {
-         let token = localStorage.getItem('token')?.split(' ')[1] as string
-         let tokenData = JSON.parse(atob(token.split('.')[1]))
-         setUserName(tokenData.name)
-     }
+  useEffect(() => {
+    // Configurações do gráfico
+    const options = {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'GRÁFICO DE TESTE'
+      },
+      series: [{
+        data: [1, 2, 9, 4, 5]
+      }]
+    };
+  
+    const options2 = {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'GRÁFICO DE TESTE 2'
+      },
+      series: [{
+        data: [1, 2, 9, 4, 5]
+      }]
+    };
 
-     useEffect(() => {
-         getName()
-     }, [])
+
+    // Inicializa o gráfico
+    Highcharts.chart(chartRef.current, options);
+    Highcharts.chart(chartRef2.current, options2)
+  }, []);
+
+    // const getName = () => {
+    //      let token = localStorage.getItem('token')?.split(' ')[1] as string
+    //      let tokenData = JSON.parse(atob(token.split('.')[1]))
+    //      setUserName(tokenData.name)
+    //  }
+
+    //  useEffect(() => {
+    //      getName()
+    //  }, [])
 
     return(
         <div className="dashboard-container">
@@ -33,7 +69,16 @@ export function Dashboard(){
                         </div>
                     </div>
                 </header>
+
+                <div className="dashboard">
+
+                <div ref={chartRef}></div>
+                <div ref={chartRef2}></div>
+
+                </div>
+
                 <div className="graphics-container">
+               
                 <button onClick={() => navigate('/partners')}>PARCEIROS</button>
                 </div> 
             </main>
