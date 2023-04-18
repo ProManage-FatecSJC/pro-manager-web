@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import diacritics from 'diacritics';
 
+import { useNavigate} from 'react-router-dom';
 import { URI } from '../../api/uri';
 import api from '../../api/api';
 import { EStatus } from '../../enum/EStatus';
@@ -22,6 +23,7 @@ interface Partner {
 }
 
 export function Partners() {
+    const navigate = useNavigate ()
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
 
@@ -83,6 +85,7 @@ export function Partners() {
                         </div>
                     </div>
                     <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar parceiro</button>
+                    <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
                 </header>
                 <div className="filter_container">
                     <div className="filter">

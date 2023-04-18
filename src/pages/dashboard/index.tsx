@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import './style.scss'
 
 export function Dashboard(){
-    
-    const [userName, setUserName] = useState('')
 
-    const getName = () => {
-        let token = localStorage.getItem('token')?.split(' ')[1] as string
-        let tokenData = JSON.parse(atob(token.split('.')[1]))
-        setUserName(tokenData.name)
-    }
+    const navigate = useNavigate ()
+    const [userName, setUserName] = useState('FULANO')
 
-    useEffect(() => {
-        getName()
-    }, [])
+    // const getName = () => {
+    //     let token = localStorage.getItem('token')?.split(' ')[1] as string
+    //     let tokenData = JSON.parse(atob(token.split('.')[1]))
+    //     setUserName(tokenData.name)
+    // }
+
+    // useEffect(() => {
+    //     getName()
+    // }, [])
 
     return(
         <div className="dashboard-container">
@@ -31,10 +33,9 @@ export function Dashboard(){
                         </div>
                     </div>
                 </header>
-
                 <div className="graphics-container">
-
-                </div>
+                <button onClick={() => navigate('/partners')}>PARCEIROS</button>
+                </div> 
             </main>
         </div>
     )
