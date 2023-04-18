@@ -6,17 +6,17 @@ import './style.scss'
 export function Dashboard(){
 
     const navigate = useNavigate ()
-    const [userName, setUserName] = useState('FULANO')
+    const [userName, setUserName] = useState('')
 
-    // const getName = () => {
-    //     let token = localStorage.getItem('token')?.split(' ')[1] as string
-    //     let tokenData = JSON.parse(atob(token.split('.')[1]))
-    //     setUserName(tokenData.name)
-    // }
+    const getName = () => {
+         let token = localStorage.getItem('token')?.split(' ')[1] as string
+         let tokenData = JSON.parse(atob(token.split('.')[1]))
+         setUserName(tokenData.name)
+     }
 
-    // useEffect(() => {
-    //     getName()
-    // }, [])
+     useEffect(() => {
+         getName()
+     }, [])
 
     return(
         <div className="dashboard-container">
