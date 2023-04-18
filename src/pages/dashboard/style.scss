@@ -23,7 +23,36 @@
             width: 100%;
             padding: 2.4rem 1.6rem 0.8rem 1.6rem;
             border-bottom: 2px solid #e2e2e2;
-
         }
+
+       .graphics-container{
+        display: flex;
+        align-items: flex-end;
+        flex-direction: row-reverse;
+        width: 100%;
+
+        padding-block: 16px;
+
+        button {
+            padding: 1.2rem 1.6rem;
+
+            border: 1px solid #4C825C;
+            background: none;
+
+            border-radius: 0.8rem;
+
+            color: #4c825c;
+            font-weight: 500;
+
+            transition: 0.2s;
+
+            &:hover {
+                background: #4c825c;
+                color: #f8f8f8;
+                cursor: pointer;
+            }
+        }
+
+       }
     }
-}
+    }
