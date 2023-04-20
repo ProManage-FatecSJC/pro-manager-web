@@ -21,7 +21,7 @@ $ cd promanage-frontend
 $ yarn install
 
 # Iniciar o projeto
-$ yarn dev
+$ yarn run dev
 
 
 ```
