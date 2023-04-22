@@ -50,9 +50,26 @@
             }
         }
 
-        .dashboard{
+        .chartRow{
 
             margin: 2%;
+            display: flex;
+            flex-direction: row;
+            height: 50%;
+
+            .contador{
+                margin: 2%;
+                padding: 2%;
+                background-color: #566395;
+                height: 50%;
+                h3{
+                    color: #e2e2e2;
+                }
+                
+                h4{
+                    color: #e2e2e2;
+                }
+            }
         }
 
     .graphics-container {
