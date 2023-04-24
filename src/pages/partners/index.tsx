@@ -14,6 +14,7 @@ import mock_avatar_2 from '../../assets/images/avatar_2.svg';
 import empty_image from '../../assets/images/Ilustração.svg';
 
 import './style.scss';
+import { ModalMemberRegister } from '../../components/modalMemberRegister';
 
 interface Partner {
     id: number;
@@ -146,6 +147,7 @@ export function Partners() {
                                             partnerStatus={EStatus[member.status]}
                                             partnerImage={mock_avatar}
                                             partnerResponsibilityImage={mock_avatar_2}
+                                            partnerId={member.id}
                                         />
                                     ))}
                                 </tr>

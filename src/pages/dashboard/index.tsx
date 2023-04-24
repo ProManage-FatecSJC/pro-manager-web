@@ -129,7 +129,7 @@ export function Dashboard() {
     Highcharts.chart(chartRef3.current, bar)
     Highcharts.chart(chartRef4.current, line)
     Highcharts.chart(chartRef5.current, line)
-  }, []);
+  });
 
   const getName = () => {
     let token = localStorage.getItem('token')?.split(' ')[1] as string

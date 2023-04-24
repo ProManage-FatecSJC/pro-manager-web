@@ -28,7 +28,7 @@ export function Login() {
         api.post(URI.LOGIN, login).then(response => {
             if(response.status == 200){
                 localStorage.setItem('token', 'Bearer ' + response.data.token)
-                navigate('/partners')
+                navigate('/dashboard')
             } else {
                 throw new Error('Erro ao efetuar login')
             }
