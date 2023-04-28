@@ -1,151 +1,147 @@
 .register-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     width: 100%;
     height: calc(100vh - 90px);
 
-    main {
+    .table_header {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
 
-        width: 90%;
-        height: 90vh;
-        overflow-y: auto;
+        width: 95%;
+        padding: 2.4rem 1.6rem 0.8rem 1.6rem;
 
-        .table_header {
+        border-bottom: 2px solid #e2e2e2;
+
+        h1 {
+            font-weight: 700;
+            color: #6B7494;
+        }
+
+        .search_bar_container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
 
-            width: 100%;
-            padding: 2.4rem 1.6rem 0.8rem 1.6rem;
+            width: 60%;
 
-            border-bottom: 2px solid #e2e2e2;
+            input {
+                width: 100%;
+                padding: 0.8rem 3.2rem;
 
-            h1 {
-                font-weight: 700;
-                color: #6B7494;
-            }
+                margin-right: -4.3rem;
 
-            .search_bar_container {
-                display: flex;
-                justify-content: center;
-
-                width: 60%;
-
-                input {
-                    width: 100%;
-                    padding: 0.8rem 3.2rem;
-
-                    margin-right: -4.3rem;
-
-                    border: none;
-                    border-bottom: 2px solid #29292e;
-                    background: none;
-
-                    outline: none;
-
-                    color: #29292e;
-                    font-weight: 500;
-
-                    font-size: 1.6rem;
-
-                    transition: all 0.2s;
-
-                    &::placeholder {
-                        font-size: 1.6rem;
-                        color: #7A736E;
-                    }
-
-                    &:focus {
-                        border: 2px solid #566395;
-                        border-radius: 3.2rem;
-                    }
-                }
-
-                .search_icon {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-            }
-
-
-            button {
-                padding: 1.2rem 1.6rem;
-
-                border: 1px solid #4C825C;
+                border: none;
+                border-bottom: 2px solid #29292e;
                 background: none;
 
-                border-radius: 0.8rem;
+                outline: none;
 
-                color: #4c825c;
+                color: #29292e;
                 font-weight: 500;
 
-                transition: 0.2s;
+                font-size: 1.6rem;
 
-                &:hover {
-                    background: #4c825c;
-                    color: #f8f8f8;
-                    cursor: pointer;
+                transition: all 0.2s;
+
+                &::placeholder {
+                    font-size: 1.6rem;
+                    color: #7A736E;
                 }
+
+                &:focus {
+                    border: 2px solid #566395;
+                    border-radius: 3.2rem;
+                }
+            }
+
+            .search_icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 
-        .filter_container {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
+        button {
+            padding: 1.2rem 1.6rem;
 
-            padding: 1.6rem 1.6rem 0.8rem 1.6rem;
+            border: 1px solid #4C825C;
+            background: none;
 
-            .filter {
-                label {
-                    font-weight: 500;
-                    color: #6B7494;
-                    margin-right: 0.8rem;
-                }
+            border-radius: 0.8rem;
 
-                select {
-                    padding: 0.8rem 1.6rem;
+            color: #4c825c;
+            font-weight: 500;
 
-                    border: none;
-                    border-bottom: 2px solid #29292e;
-                    background: none;
+            transition: 0.2s;
 
-                    outline: none;
+            &:hover {
+                background: #4c825c;
+                color: #f8f8f8;
+                cursor: pointer;
+            }
+        }
+    }
 
+    .filter_container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        padding: 1.6rem 1.6rem 0.8rem 1.6rem;
+
+        .filter {
+            label {
+                font-weight: 500;
+                color: #6B7494;
+                margin-right: 0.8rem;
+            }
+
+            select {
+                padding: 0.8rem 1.6rem;
+
+                border: none;
+                border-bottom: 2px solid #29292e;
+                background: none;
+
+                outline: none;
+
+                color: #29292e;
+                font-weight: 500;
+
+                font-size: 1.6rem;
+
+                transition: all 0.2s;
+
+                cursor: pointer;
+
+                option {
                     color: #29292e;
                     font-weight: 500;
-
-                    font-size: 1.6rem;
-
-                    transition: all 0.2s;
-
-                    cursor: pointer;
-
-                    option {
-                        color: #29292e;
-                        font-weight: 500;
-                    }
-
-                    &:focus {
-                        border: 2px solid #29292e;
-                        border-top-right-radius: 1.6rem;
-                        border-top-left-radius: 1.6rem;
-                    }
                 }
-            }
 
-            .filter:nth-child(1) {
-                margin-right: 3.2rem;
+                &:focus {
+                    border: 2px solid #29292e;
+                    border-top-right-radius: 1.6rem;
+                    border-top-left-radius: 1.6rem;
+                }
             }
         }
 
+        .filter:nth-child(1) {
+            margin-right: 3.2rem;
+        }
+    }
+
+    main {
+        width: 95%;
+        height: 70vh;
+
+        overflow-y: auto;
+        
         table {
             margin-top: 1.6rem;
             width: 100%;
@@ -153,10 +149,10 @@
             border-collapse: collapse;
 
             tbody {
-                border-bottom: 2px solid #e2e2e2;
                 padding: 1.6rem;
 
                 tr {
+                    overflow-y: auto;
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-gap: 1.6rem;

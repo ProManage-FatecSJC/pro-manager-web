@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import diacritics from 'diacritics';
 
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { URI } from '../../api/uri';
 import api from '../../api/api';
 import { EStatus } from '../../enum/EStatus';
@@ -14,7 +14,6 @@ import mock_avatar_2 from '../../assets/images/avatar_2.svg';
 import empty_image from '../../assets/images/Ilustração.svg';
 
 import './style.scss';
-import { ModalMemberRegister } from '../../components/modalMemberRegister';
 
 interface Partner {
     id: number;
@@ -24,7 +23,7 @@ interface Partner {
 }
 
 export function Partners() {
-    const navigate = useNavigate ()
+    const navigate = useNavigate()
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
     const [partner, setPartner] = useState<Partner[]>([]);
 
@@ -76,56 +75,56 @@ export function Partners() {
 
     return (
         <div className="register-container">
-            <main>
-                <header className='table_header'>
-                    <h1>Parceiros</h1>
-                    <div className='search_bar_container'>
-                        <input placeholder='Pesquisar parceiro' onChange={(e) => setSearchTerm(e.target.value)} />
-                        <div className="search_icon">
-                            <MagnifyingGlass size={24} />
-                        </div>
-                    </div>
-                    <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar parceiro</button>
-                    <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
-                </header>
-                <div className="filter_container">
-                    <div className="filter">
-                        <label htmlFor="status">Status</label>
-                        <select
-                            name="status"
-                            id="status"
-                            value={statusFilter}
-                            onChange={e => setStatusFilter(e.target.value)}
-                        >
-                            <option value="all">Todos</option>
-                            <option value="0">Em prospecção</option>
-                            <option value="1">Primeiro contato feito</option>
-                            <option value="2">Primeira reunião marcada/realizada</option>
-                            <option value="3">Documentação enviada/em análise (Parceiro)</option>
-                            <option value="4">Documentação devolvida (Em análise Academy)</option>
-                            <option value="5">Documentação devolvida (Em análise Legal)</option>
-                            <option value="6">Documentação analisada devolvida (Parceiro)</option>
-                            <option value="7">Em preparação de Executive Sumary (Academy)</option>
-                            <option value="8">ES em análise (Legal)</option>
-                            <option value="9">ES em análise (Academy Global)</option>
-                            <option value="10">Pronto para assinatura</option>
-                            <option value="11">Parceria Firmada</option>
-                        </select>
-                    </div>
-                    <div className="filter">
-                        <label htmlFor="alphaOrder">Ordem alfabética</label>
-                        <select
-                            name="alphaOrder"
-                            id="alphaOrder"
-                            value={alphaOrderFilter}
-                            onChange={e => setAlphaOrderFilter(e.target.value)}
-                        >
-                            <option value="all">Selecione</option>
-                            <option value="ascending">De A a Z</option>
-                            <option value="descending">De Z a A</option>
-                        </select>
+            <header className='table_header'>
+                <h1>Parceiros</h1>
+                <div className='search_bar_container'>
+                    <input placeholder='Pesquisar parceiro' onChange={(e) => setSearchTerm(e.target.value)} />
+                    <div className="search_icon">
+                        <MagnifyingGlass size={24} />
                     </div>
                 </div>
+                <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar parceiro</button>
+                <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
+            </header>
+            <div className="filter_container">
+                <div className="filter">
+                    <label htmlFor="status">Status</label>
+                    <select
+                        name="status"
+                        id="status"
+                        value={statusFilter}
+                        onChange={e => setStatusFilter(e.target.value)}
+                    >
+                        <option value="all">Todos</option>
+                        <option value="0">Em prospecção</option>
+                        <option value="1">Primeiro contato feito</option>
+                        <option value="2">Primeira reunião marcada/realizada</option>
+                        <option value="3">Documentação enviada/em análise (Parceiro)</option>
+                        <option value="4">Documentação devolvida (Em análise Academy)</option>
+                        <option value="5">Documentação devolvida (Em análise Legal)</option>
+                        <option value="6">Documentação analisada devolvida (Parceiro)</option>
+                        <option value="7">Em preparação de Executive Sumary (Academy)</option>
+                        <option value="8">ES em análise (Legal)</option>
+                        <option value="9">ES em análise (Academy Global)</option>
+                        <option value="10">Pronto para assinatura</option>
+                        <option value="11">Parceria Firmada</option>
+                    </select>
+                </div>
+                <div className="filter">
+                    <label htmlFor="alphaOrder">Ordem alfabética</label>
+                    <select
+                        name="alphaOrder"
+                        id="alphaOrder"
+                        value={alphaOrderFilter}
+                        onChange={e => setAlphaOrderFilter(e.target.value)}
+                    >
+                        <option value="all">Selecione</option>
+                        <option value="ascending">De A a Z</option>
+                        <option value="descending">De Z a A</option>
+                    </select>
+                </div>
+            </div>
+            <main>
                 {
                     filteredPartner.length === 0 ? (
                         <div className="empty_content">
