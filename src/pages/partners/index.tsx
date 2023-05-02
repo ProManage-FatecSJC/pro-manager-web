@@ -83,7 +83,7 @@ export function Partners() {
                         <MagnifyingGlass size={24} />
                     </div>
                 </div>
-                <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar parceiro</button>
+                <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar Parceiro</button>
                 <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
             </header>
             <div className="filter_container">
