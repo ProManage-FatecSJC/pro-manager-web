@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './styles.scss'
 import { ModalRegister } from '../modalRegister';
 import { ModalMemberRegister } from '../modalMemberRegister';
+import { useNavigate } from 'react-router-dom';
 
 type PartnerCardTypes = {
     partnerImage?: string;
@@ -15,6 +16,7 @@ type PartnerCardTypes = {
 export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId }: PartnerCardTypes) {
 
     const [isRegisterMemberModalOpen, setIsRegisterMemberModalOpen] = useState(false)
+    const navigate = useNavigate()
 
     return (
         <><td className="container_card">
@@ -29,7 +31,7 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
             <div className='teste'>
 
-                <button onClick={() => {setIsRegisterMemberModalOpen(true)}}> Adicionar membro </button>
+                <button onClick={() => {navigate('/Members')}}> Visualizar membros </button>
                 <div className='partner_responsibility_img'>
                     <img src={partnerResponsibilityImage} alt="Foto do responsável" />
                 </div>
