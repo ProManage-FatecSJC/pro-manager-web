@@ -1,10 +1,13 @@
-import { Bell, User } from 'phosphor-react';
+import { Bell, SignOut, User } from 'phosphor-react';
 import { useState } from 'react';
 import './styles.scss'
+import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
     const [iconBellFill, setIconBellFill] = useState(false);
     const [iconUserFill, setIconUserFill] = useState(false);
+    const [iconSignoutFill, setIconSignoutFill] = useState(false);
+    const navigate = useNavigate()
 
     function handleIconFill(event: React.MouseEvent<HTMLButtonElement>) {
         switch (event.currentTarget.name) {
@@ -13,6 +16,11 @@ export function Navbar() {
                 break;
             case 'userIcon':
                 setIconUserFill(!iconUserFill);
+                break;
+            case 'signoutIcon':
+                setIconSignoutFill(!iconSignoutFill);
+                localStorage.clear()
+                navigate('/');
                 break;
         }
     }
@@ -27,6 +35,10 @@ export function Navbar() {
 
                 <button name='userIcon' onClick={handleIconFill}>
                     {iconUserFill ? <User size={24} weight='fill' color='#f8f8f8'/> : <User size={24} color='#f8f8f8'/>}
+                </button>
+
+                <button name='signoutIcon' onClick={handleIconFill}>
+                    {iconSignoutFill ? <SignOut size={24} weight='fill' color='#f8f8f8'/> : <SignOut size={24} color='#f8f8f8'/>}
                 </button>
             </div>
         </div>
