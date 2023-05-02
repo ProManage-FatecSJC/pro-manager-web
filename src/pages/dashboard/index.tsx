@@ -131,7 +131,7 @@ export function Dashboard() {
     Highcharts.chart(chartRef5.current, line)
   });
 
-  const getName = () => {
+  /*const getName = () => {
     let token = localStorage.getItem('token')?.split(' ')[1] as string
     let tokenData = JSON.parse(atob(token.split('.')[1]))
     setUserName(tokenData.name)
@@ -139,7 +139,7 @@ export function Dashboard() {
 
   useEffect(() => {
     getName()
-  }, [])
+  }, [])*/
 
   return (
     <div className="dashboard-container">
