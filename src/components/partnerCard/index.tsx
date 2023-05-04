@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './styles.scss'
 import { ModalRegister } from '../modalRegister';
 import { ModalMemberRegister } from '../modalMemberRegister';
+import { ModalViewPartner } from '../ModalViewPartner';
 import { useNavigate } from 'react-router-dom';
 
 type PartnerCardTypes = {
@@ -10,16 +11,26 @@ type PartnerCardTypes = {
     partnerName: string;
     partnerResponsibilityName: string;
     partnerStatus: string;
-    partnerId: any
+    partnerId: any;
+    partnerPrivacy: any
+    partnerType: any
+    partnerAmount: any
+    partnerContact: any
+    partnerResponsible: any
+    partnerState: any
+
 }
 
-export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId }: PartnerCardTypes) {
+export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId, partnerType, partnerAmount, partnerPrivacy, partnerContact, partnerResponsible, partnerState}: PartnerCardTypes) {
 
     const [isRegisterMemberModalOpen, setIsRegisterMemberModalOpen] = useState(false)
+    const [isModalViewPartnerOpen, setIsModalViewPartnerOpen] = useState(false);
     const navigate = useNavigate()
 
     return (
-        <><td className="container_card">
+        <>
+         <button onClick={() => setIsModalViewPartnerOpen(true)}>
+        <td className="container_card">
             <div className='partner_img'>
                 <img src={partnerImage} alt="Foto do parceiro" />
             </div>
@@ -37,9 +48,27 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
                 </div>
             </div>
 
-        </td><ModalMemberRegister
+        </td>
+    </button>
+
+        <ModalMemberRegister
                 isOpen={isRegisterMemberModalOpen}
                 setModalOpen={() => setIsRegisterMemberModalOpen(!isRegisterMemberModalOpen)}
-                partnerId={partnerId} /></>
+                partnerId={partnerId} />
+
+        <ModalViewPartner
+                partnerImage={partnerImage}
+                partnerName={partnerName}
+                partnerStatus={partnerStatus}
+                partnerType={partnerType}
+                partnerPrivacy={partnerPrivacy}
+                partnerAmount={partnerAmount}
+                partnerContact={partnerContact}
+                partnerResponsible={partnerResponsibilityName}
+                partnerState={partnerState}
+                isOpen={isModalViewPartnerOpen}
+                setModalOpen={() => setIsModalViewPartnerOpen(!isModalViewPartnerOpen)}
+            />        
+                </>
     )
 }

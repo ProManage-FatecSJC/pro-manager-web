@@ -9,11 +9,12 @@ import { EStatus } from '../../enum/EStatus';
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
 import { ModalRegister } from '../../components/modalRegister';
+import { ModalViewPartner } from '../../components/ModalViewPartner';
 import mock_avatar from '../../assets/images/avatar.svg';
 import mock_avatar_2 from '../../assets/images/avatar_2.svg';
 import empty_image from '../../assets/images/Ilustração.svg';
-
 import './style.scss';
+import { ModalUserRegister } from '../../components/modalUserRegister';
 
 interface Partner {
     id: number;
@@ -25,10 +26,11 @@ interface Partner {
 export function Partners() {
     const navigate = useNavigate()
     const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
-    const [partner, setPartner] = useState<Partner[]>([]);
+    const [isModalViewPartnerOpen, setIsModalViewPartnerOpen] = useState(false);
+    const [partner, setPartner] = useState<any[]>([]);
 
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const [filteredPartner, setFilteredPartner] = useState<Partner[]>([]);
+    const [filteredPartner, setFilteredPartner] = useState<any[]>([]);
     const token = localStorage.getItem('token')
     const [statusFilter, setStatusFilter] = useState('all');
     const [alphaOrderFilter, setAlphaOrderFilter] = useState('all');
@@ -141,12 +143,18 @@ export function Partners() {
                                     {filteredPartner.map((member, index) => (
                                         <PartnerCard
                                             key={index}
+                                            partnerPrivacy={member.privacy}
+                                            partnerType={member.type}
+                                            partnerAmount={member.membersQuantity}
+                                            partnerContact={member.telephone}
+                                            partnerState={member.state} 
                                             partnerName={member.name}
                                             partnerResponsibilityName={member.intermediateResponsible}
                                             partnerStatus={EStatus[member.status]}
                                             partnerImage={mock_avatar}
                                             partnerResponsibilityImage={mock_avatar_2}
                                             partnerId={member.id}
+                                            partnerResponsible={member.Responsible}
                                         />
                                     ))}
                                 </tr>
@@ -160,6 +168,8 @@ export function Partners() {
                 isOpen={isRegisterModalOpen}
                 setModalOpen={() => setIsRegisterModalOpen(!isRegisterModalOpen)}
             />
+
+            
         </div>
     )
 }
