@@ -25,17 +25,17 @@ export function ModalUserRegister({ isOpen, setModalOpen }: ModalProps) {
         setShowPassword(!showPassword);
     }
 
-    let partner = {
+    let user = {
         name: UserName,
         email: UserEmail,
-        senha: UserSenha,
-        acesso: UserNivel,
+        password: UserSenha,
+        role: parseInt(UserNivel),
     }
 
     const handleNewPartner = async (e: any) => {
         e.preventDefault();
         api.
-        post(URI.PARTNER, partner, {
+        post(URI.REGISTER, user, {
             headers: {
                 Authorization: token
             }
@@ -95,7 +95,7 @@ export function ModalUserRegister({ isOpen, setModalOpen }: ModalProps) {
                             <div className="input_user_wrapper">
                                 <label htmlFor="email">e-Mail</label>
                                 <input
-                                    id="name"
+                                    id="email"
                                     type="text"
                                     name="name"
                                     placeholder='Digite o e-Email'
@@ -147,8 +147,8 @@ export function ModalUserRegister({ isOpen, setModalOpen }: ModalProps) {
                                 </select>
                             </div>
                         </div>
-                    </form>
                         <button type="submit" className="btn_user_submit">Cadastrar Usuário</button>
+                    </form>
 
                 </main>
             </div>

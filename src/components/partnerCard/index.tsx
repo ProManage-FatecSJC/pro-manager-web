@@ -15,7 +15,6 @@ type PartnerCardTypes = {
 
 export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId }: PartnerCardTypes) {
 
-    const [isRegisterMemberModalOpen, setIsRegisterMemberModalOpen] = useState(false)
     const navigate = useNavigate()
 
     return (
@@ -37,9 +36,6 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
                 </div>
             </div>
 
-        </td><ModalMemberRegister
-                isOpen={isRegisterMemberModalOpen}
-                setModalOpen={() => setIsRegisterMemberModalOpen(!isRegisterMemberModalOpen)}
-                partnerId={partnerId} /></>
+        </td></>
     )
 }
