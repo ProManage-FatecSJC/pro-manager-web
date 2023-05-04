@@ -20,13 +20,21 @@ export function Dashboard() {
   const [partner, setPartner]: any[] = useState([]);
   const [member, setMember]: any[] = useState([]);
 
+  let filter = {
+    privacy: 2,
+    type: 2,
+    state: 'all'
+  }
+
   useEffect(() => {
-    api.get(URI.PARTNER, {
+    api.post(URI.PARTNER + '/byFiltro', filter, {
       headers: {
         Authorization: token
       }
     })
       .then((response) => {
+        console.log(filter)
+        console.log(response.data)
         setPartner(response.data);
       })
   },[])
@@ -131,7 +139,7 @@ export function Dashboard() {
     Highcharts.chart(chartRef5.current, line)
   });
 
-  /*const getName = () => {
+  const getName = () => {
     let token = localStorage.getItem('token')?.split(' ')[1] as string
     let tokenData = JSON.parse(atob(token.split('.')[1]))
     setUserName(tokenData.name)
@@ -139,7 +147,46 @@ export function Dashboard() {
 
   useEffect(() => {
     getName()
-  }, [])*/
+  }, [])
+
+  const changeState = (value: string) => {
+    filter.state = value
+
+    api.post(URI.PARTNER + '/byFiltro', filter, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      setPartner(response.data);
+    })
+  }
+
+  const changeType = (value: string) => {
+    filter.type = parseInt(value)
+
+    api.post(URI.PARTNER + '/byFiltro', filter, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      setPartner(response.data);
+    })
+  }
+
+  const changePrivacy = (value: string) => {
+    filter.privacy = parseInt(value)
+
+    api.post(URI.PARTNER + '/byFiltro', filter, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      setPartner(response.data);
+    })
+  }
 
   return (
     <div className="dashboard-container">
@@ -150,7 +197,7 @@ export function Dashboard() {
           <div className="filter-container">
             <h2>Filtrar por:</h2>
             <div className="filter-group">
-              <select name="" id="" className="filter">
+              <select name="" id="" className="filter" onChange={(e) => changeState(e.target.value)}>
 
                         <option value="all">Estados</option>
                                     <option value="AC">Acre</option>
@@ -185,18 +232,19 @@ export function Dashboard() {
 
 
               
-              <select name="" id="" className="filter">
+              <select name="" id="" className="filter" onChange={(e) => changeType(e.target.value)}>
 
-              <option value="all">Tipo</option>
-              <option value="multiplo">Múltiplo</option>
-              <option value="unico">Único</option>
+              <option value="2">Tipo</option>
+              <option value="0">Único</option>
+              <option value="1">Múltiplo</option>
 
               </select>
-              <select name="" id="" className="filter">
 
-              <option value="all">Privacidade</option>
-              <option value="publico">Público</option>
-              <option value="privado">Privado</option>
+              <select name="" id="" className="filter" onChange={(e) => changePrivacy(e.target.value)}>
+
+              <option value="2">Privacidade</option>
+              <option value="0">Privado</option>
+              <option value="1">Público</option>
 
               </select>
             </div>
