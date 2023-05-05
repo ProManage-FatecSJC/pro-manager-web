@@ -21,9 +21,9 @@
         flex-direction: column;
 
         width: 100%;
-        max-width: 800px;
+        max-width: 500px;
         height: 85% !important;
-        max-height: 558px;
+        max-height: 5580px;
 
         padding: 0.8rem 1.6rem;
 
@@ -35,21 +35,24 @@
             height: 40%;
         }
 
+        .exit_icon:hover{
+            cursor: pointer;
+        }
+
+        
         .header_line {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             margin-bottom: 2.4rem;
-            
 
             width: 100%;
 
-
-            .icon_exit:hover {
-                cursor: pointer;
-            }
-
             >div {
                 display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
 
                 >div {
                     margin-left: 0.8rem;
@@ -176,7 +179,7 @@
             background: #4C825C;
             border-radius: 0.4rem;
 
-            width: 100%;
+            width: 50%;
 
             color: #fff;
 
@@ -193,3 +196,5 @@
             }
         }
     }
+
+    
