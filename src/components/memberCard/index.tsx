@@ -16,8 +16,8 @@ export function MemberCard({ image, name, trade_name, CNPJ }: MemberCardTypes){
 
             <div className="info_card">
                 <h2>{name}</h2>
-                <p>{trade_name}</p>
-                <p>{CNPJ}</p>
+                <p>Nome fantasia: {trade_name}</p>
+                <p>CNPJ: {CNPJ}</p>
             </div>
         </td></>
     )

@@ -41,7 +41,11 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
             <div className='teste'>
 
-                <button onClick={() => {navigate('/Members')}}> Visualizar membros </button>
+                <button onClick={() => {navigate('/Members', {
+                    state: {
+                        partnerId: partnerId
+                        }
+                    })}}> Visualizar membros </button>
                 <div className='partner_responsibility_img'>
                     <img src={partnerResponsibilityImage} alt="Foto do responsável" />
                 </div>

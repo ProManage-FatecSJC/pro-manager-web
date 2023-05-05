@@ -16,6 +16,12 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
     const [memberTradeName, setMemberTradeName] = useState('');
     const [memberCNPJ, setMemberCNPJ] = useState('');
     const [memberTelephone, setMemberTelephone] = useState('');
+    const [memberCEP, setMemberCEP] = useState('');
+    const [memberLogradouro, setMemberLogradouro] = useState('');
+    const [memberNumero, setMemberNumero] = useState('');
+    const [memberComplemento, setMemberComplemento] = useState('')
+    const [memberEstado, setMemberEstado] = useState('')
+    const [memberCidade, setMemberCidade] = useState('')
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
 
@@ -24,12 +30,20 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
         trade_name: memberTradeName,
         CNPJ: memberCNPJ,
         telephone: memberTelephone,
+        address: {
+            CEP: memberCEP,
+            street: memberLogradouro,
+            number: memberNumero,
+            complement: memberComplemento,
+            state: memberEstado,
+            city: memberCidade
+        },
         partner: {
             id: partnerId
         }
     }
 
-    const handleNewMember= async (e: any) => {
+    const handleNewMember = async (e: any) => {
         e.preventDefault();
         api.
             post(URI.MEMBERS, member, {
@@ -62,7 +76,7 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
 
     if (isOpen) {
         return (
-            <div className='modal_member_wrapper'>
+            <div className='modal_wrapper'>
                 <main>
                     <div className="head_line">
                         <div>
@@ -88,36 +102,123 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
                                 />
                             </div>
                             <div className="input_wrapper">
-                                <label htmlFor="name">Nome fantasia do membro</label>
+                                <label htmlFor="trade_name">Nome fantasia do membro</label>
                                 <input
-                                    id="name"
+                                    id="trade_name"
                                     type="text"
-                                    name="name"
+                                    name="trade_name"
                                     placeholder='Digite o nome fantasia do parceiro'
                                     onChange={e => setMemberTradeName(e.target.value)}
                                     required
                                 />
                             </div>
                             <div className="input_wrapper">
-                                <label htmlFor="name">CNPJ do membro</label>
+                                <label htmlFor="cnpj">CNPJ do membro</label>
                                 <input
-                                    id="name"
+                                    id="cnpj"
                                     type="text"
-                                    name="name"
+                                    name="cnpj"
                                     placeholder='Digite o nome do parceiro'
                                     onChange={e => setMemberCNPJ(e.target.value)}
                                     required
                                 />
                             </div>
                             <div className="input_wrapper">
-                                <label htmlFor="name">Telefone do parceiro</label>
+                                <label htmlFor="telefone">Telefone do membro</label>
                                 <input
-                                    id="name"
+                                    id="telefone"
                                     type="text"
-                                    name="name"
+                                    name="telefone"
                                     placeholder='Digite o telefone do parceiro'
                                     onChange={e => setMemberTelephone(e.target.value)}
                                     required
+                                />
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="cep">CEP</label>
+                                <input
+                                    id="cep"
+                                    type="text"
+                                    name="cep"
+                                    placeholder="Digite um cep; ex: 12246-190"
+                                    onChange={e => setMemberCEP(e.target.value)}
+                                />
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="logradouro">Logradouro</label>
+                                <input
+                                    id="logradouro"
+                                    type="text"
+                                    name="logradouro"
+                                    placeholder="Digite um logradouro; ex: Rua Lavapés"
+                                    onChange={e => setMemberLogradouro(e.target.value)}
+                                />
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="numero">Número</label>
+                                <input
+                                    id="numero"
+                                    type="text"
+                                    name="numero"
+                                    placeholder="Digite um número; ex: 281"
+                                    onChange={e => setMemberNumero(e.target.value)}
+                                />
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="complemento">Complemento</label>
+                                <input
+                                    id="complemento"
+                                    type="text"
+                                    name="complemento"
+                                    placeholder="Digite um complemento; ex: apto. 214"
+                                    onChange={e => setMemberComplemento(e.target.value)}
+                                />
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="state">Estado em que se encontra</label>
+                                <select
+                                    name="state"
+                                    id="state"
+                                    onChange={e => setMemberEstado(e.target.value)}
+                                >
+                                    <option>Selecione</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                            <div className="input_wrapper">
+                                <label htmlFor="cidade">Cidade</label>
+                                <input
+                                    id="cidade"
+                                    type="text"
+                                    name="cidade"
+                                    placeholder="Digite uma cidade; ex: Jacareí"
+                                    onChange={e => setMemberCidade(e.target.value)}
                                 />
                             </div>
 
@@ -126,7 +227,7 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
                     </form>
 
                 </main>
-            </div>
+            </div >
         )
     };
     return null;
