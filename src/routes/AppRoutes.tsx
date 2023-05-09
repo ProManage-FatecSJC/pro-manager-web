@@ -3,6 +3,7 @@ import { DefaultLayout } from "../default";
 import { Login, Partners } from "../pages";
 import { Dashboard } from "../pages/dashboard";
 import { Members } from "../pages/members";
+import{ ArquivedPartners } from "../pages/archived_partners"
 
 
 export function AppRoutes() {

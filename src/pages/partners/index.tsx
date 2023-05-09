@@ -86,6 +86,7 @@ export function Partners() {
                     </div>
                 </div>
                 <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar Parceiro</button>
+                <button onClick={() => navigate('/archived_partner')}>Parceiros Arquivados</button>
                 <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
             </header>
             <div className="filter_container">
