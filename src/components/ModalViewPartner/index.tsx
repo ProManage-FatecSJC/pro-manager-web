@@ -55,14 +55,17 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
                         </div>
                     </div>
                     <img src={partnerImage} alt="Foto do parceiro" />
-                    <p>Status: {partnerStatus}</p>
-                    <p>Privacidade: {partnerPrivacy}</p>
-                    <p>Tipo: {partnerType}</p>
-                    <p>Quantidade: {partnerAmount}</p>
-                    <p>Contato: {partnerContact}</p>
-                    <p>Responsável: {partnerResponsible}</p>
-                    <p>Estado: {partnerState}</p>
+                    <p><strong>Status:</strong> {partnerStatus}</p>
+                    <p><strong>Privacidade:</strong> {partnerPrivacy}</p>
+                    <p><strong>Tipo:</strong> {partnerType}</p>
+                    <p><strong>Quantidade:</strong>{partnerAmount}</p>
+                    <p><strong>Contato:</strong> {partnerContact}</p>
+                    <p><strong>Responsável:</strong> {partnerResponsible}</p>
+                    <p><strong>Estado:</strong> {partnerState}</p>
+                    <div className='buttons_modal'>
                     <button type="submit" className="btn_user_submit">Editar Parceiro</button>
+                    <button type="submit" className="btn_user_submit2">Arquivar Parceiro</button>
+                    </div>
                 </main>
             </div>
         )
