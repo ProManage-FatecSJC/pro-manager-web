@@ -1,5 +1,6 @@
 import './styles.scss'
 import { useState } from 'react';
+import { useEffect } from 'react'
 import './styles.scss'
 import { ModalRegister } from '../modalRegister';
 import { ModalMemberRegister } from '../modalMemberRegister';
@@ -19,6 +20,7 @@ export function MemberCard({ image, name, trade_name, CNPJ, telephone }: MemberC
 
     const [isModalViewMemberOpen, setIsModalViewMemberOpen] = useState(false);
     const navigate = useNavigate()
+
 
     return (
         <>

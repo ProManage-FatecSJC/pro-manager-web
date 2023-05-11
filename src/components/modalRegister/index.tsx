@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import api from '../../api/api';
 import { URI } from '../../api/uri';
 import { useNavigate } from 'react-router-dom';
+import { IMaskInput } from 'react-imask';
 
 type ModalProps = {
     isOpen: boolean;
@@ -156,12 +157,13 @@ export function ModalRegister({ isOpen, setModalOpen }: ModalProps) {
 
                             <div className="input_wrapper">
                                 <label htmlFor="telephone">Número de contato</label>
-                                <input
+                                <IMaskInput
+                                mask={"(00)00000-0000"}
                                     id="telephone"
                                     type="text"
                                     name="telephone"
                                     placeholder='Digite o número de contato'
-                                    onChange={e => setPartnerContact(e.target.value)}
+                                    onChange={e => setPartnerContact(e.currentTarget.value)}
                                     required
                                 />
                             </div>
