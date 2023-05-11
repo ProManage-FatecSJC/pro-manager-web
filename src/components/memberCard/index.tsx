@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './styles.scss'
 
 type MemberCardTypes = {
@@ -8,6 +9,7 @@ type MemberCardTypes = {
 }
 
 export function MemberCard({ image, name, trade_name, CNPJ }: MemberCardTypes) {
+
     return (
         <>
             <button>

@@ -4,6 +4,7 @@ import './styles.scss';
 import { URI } from "../../api/uri";
 import { useNavigate } from "react-router-dom";
 import { X, UsersThree } from 'phosphor-react';
+import { IMaskInput } from "react-imask";
 
 type ModalProps = {
     isOpen: boolean;
@@ -114,34 +115,37 @@ export function ModalMemberRegister({ isOpen, setModalOpen, partnerId }: ModalPr
                             </div>
                             <div className="input_wrapper">
                                 <label htmlFor="cnpj">CNPJ do membro</label>
-                                <input
+                                <IMaskInput
+                                    mask={"00.000.000/0000-00"}
                                     id="cnpj"
                                     type="text"
                                     name="cnpj"
                                     placeholder='Digite o nome do parceiro'
-                                    onChange={e => setMemberCNPJ(e.target.value)}
+                                    onChange={e => setMemberCNPJ(e.currentTarget.value)}
                                     required
                                 />
                             </div>
                             <div className="input_wrapper">
                                 <label htmlFor="telefone">Telefone do membro</label>
-                                <input
+                                <IMaskInput
+                                    mask={"(00)00000-0000"}
                                     id="telefone"
                                     type="text"
                                     name="telefone"
                                     placeholder='Digite o telefone do parceiro'
-                                    onChange={e => setMemberTelephone(e.target.value)}
+                                    onChange={e => setMemberTelephone(e.currentTarget.value)}
                                     required
                                 />
                             </div>
                             <div className="input_wrapper">
                                 <label htmlFor="cep">CEP</label>
-                                <input
+                                <IMaskInput
+                                    mask={"00000-000"}
                                     id="cep"
                                     type="text"
                                     name="cep"
                                     placeholder="Digite um cep; ex: 12246-190"
-                                    onChange={e => setMemberCEP(e.target.value)}
+                                    onChange={e => setMemberCEP(e.currentTarget.value)}
                                 />
                             </div>
                             <div className="input_wrapper">
