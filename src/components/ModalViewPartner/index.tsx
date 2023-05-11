@@ -1,13 +1,6 @@
 import { X, UsersThree } from 'phosphor-react';
 import './styles.scss';
 import { useEffect, useState } from 'react';
-import { PartnerCard } from '../../components/partnerCard';
-import api from '../../api/api';
-import { URI } from '../../api/uri';
-import { useNavigate } from 'react-router-dom';
-import { Eye, EyeClosed } from 'phosphor-react';
-import { ModalRegister } from '../modalRegister';
-import { Partners } from '../../pages';
 
 type ModalProps = {
     isOpen: boolean;

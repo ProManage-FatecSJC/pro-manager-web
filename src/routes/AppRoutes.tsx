@@ -14,6 +14,7 @@ export function AppRoutes() {
                 <Route path="/partners" element={<Partners />} />
                 <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/members" element={<Members />}/>
+                <Route path="/archivedPartners" element={<ArquivedPartners/>}/>
             </Route>
         </Routes>
     )

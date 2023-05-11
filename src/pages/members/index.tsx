@@ -52,6 +52,7 @@ export function Members(){
                     </div>
                 </div>
                 <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar Membro</button>
+                <button onClick={() => navigate('/partners')}>PARCEIROS</button>
                 <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
             </header>
             <main>
