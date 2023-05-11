@@ -9,12 +9,10 @@ import { EStatus } from '../../enum/EStatus';
 import { MagnifyingGlass } from 'phosphor-react';
 import { PartnerCard } from '../../components/partnerCard';
 import { ModalRegister } from '../../components/modalRegister';
-import { ModalViewPartner } from '../../components/ModalViewPartner';
 import mock_avatar from '../../assets/images/avatar.svg';
 import mock_avatar_2 from '../../assets/images/avatar_2.svg';
 import empty_image from '../../assets/images/Ilustração.svg';
 import './style.scss';
-import { ModalUserRegister } from '../../components/modalUserRegister';
 
 interface Partner {
     id: number;

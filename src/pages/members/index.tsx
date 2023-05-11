@@ -75,6 +75,7 @@ export function Members(){
                                             image={mock_avatar}
                                             name={member.name}
                                             trade_name={member.trade_name}
+                                            telephone={member.telephone}
                                             CNPJ={member.CNPJ}
                                         />
                                     ))}

@@ -1,16 +1,28 @@
 import './styles.scss'
+import { useState } from 'react';
+import './styles.scss'
+import { ModalRegister } from '../modalRegister';
+import { ModalMemberRegister } from '../modalMemberRegister';
+import { ModalViewPartner } from '../ModalViewPartner';
+import { useNavigate } from 'react-router-dom';
+import { ModalViewMember } from '../ModalViewMember';
 
 type MemberCardTypes = {
     image: any
     name: string
     trade_name: string
     CNPJ: string
+    telephone: string
 }
 
-export function MemberCard({ image, name, trade_name, CNPJ }: MemberCardTypes) {
+export function MemberCard({ image, name, trade_name, CNPJ, telephone }: MemberCardTypes) {
+
+    const [isModalViewMemberOpen, setIsModalViewMemberOpen] = useState(false);
+    const navigate = useNavigate()
+
     return (
         <>
-            <button>
+             <button onClick={() => setIsModalViewMemberOpen(true)}>
 
                 <td className="container_card">
                     <div className='partner_img'>
@@ -24,6 +36,16 @@ export function MemberCard({ image, name, trade_name, CNPJ }: MemberCardTypes) {
                     </div>
                 </td>
             </button>
+
+            <ModalViewMember
+                image={image}
+                isOpen={isModalViewMemberOpen}
+                name={name}
+                trade_name={trade_name}
+                CNPJ={CNPJ}
+                telephone={telephone}
+                setModalOpen={() => setIsModalViewMemberOpen(!isModalViewMemberOpen)}
+            /> 
         </>
     )
 }
