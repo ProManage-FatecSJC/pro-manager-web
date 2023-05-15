@@ -34,7 +34,7 @@ export function Partners() {
     const [alphaOrderFilter, setAlphaOrderFilter] = useState('all');
 
     useEffect(() => {
-        let filteredPartners = partner;
+        let filteredPartners = partner.filter(p => p.isArchived != true);
 
         // filter by status if a status is selected
         if (statusFilter !== 'all') {

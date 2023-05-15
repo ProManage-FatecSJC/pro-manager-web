@@ -43,7 +43,8 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
                 <button onClick={() => {navigate('/Members', {
                     state: {
-                        partnerId: partnerId
+                        partnerId: partnerId,
+                        partnerStatus: partnerStatus
                         }
                     })}}> Visualizar membros </button>
                 <div className='partner_responsibility_img'>

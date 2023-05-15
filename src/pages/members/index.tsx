@@ -26,6 +26,7 @@ export function Members(){
     const token = localStorage.getItem('token');
 
     const partnerId = location.state.partnerId
+    const partnerStatus = location.state.partnerStatus
 
 
     useEffect(() => {
@@ -51,7 +52,7 @@ export function Members(){
                         <MagnifyingGlass size={24}/>
                     </div>
                 </div>
-                <button onClick={() => setIsRegisterModalOpen(true)}>Adicionar Membro</button>
+                <button onClick={() => setIsRegisterModalOpen(true)} hidden={partnerStatus == 'ARQUIVADO'}>Adicionar Membro</button>
                 <button onClick={() => navigate('/partners')}>PARCEIROS</button>
                 <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
             </header>
