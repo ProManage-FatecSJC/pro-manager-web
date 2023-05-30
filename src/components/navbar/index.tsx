@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
     const [iconBellFill, setIconBellFill] = useState(false);
-    const [isUserModalOpen, setIsUserModalOpen] = useState(false);
     const [iconUserFill, setIconUserFill] = useState(false);
     const [iconUserPlusFill, setIconUserPlusFill] = useState(false);
     const [iconSignoutFill, setIconSignoutFill] = useState(false);
@@ -61,12 +60,6 @@ export function Navbar() {
                 </button>
 
             </div>
-
-            <ModalUserRegister
-                isOpen={isUserModalOpen}
-                setModalOpen={() => setIsUserModalOpen(!isUserModalOpen)}
-            />
-        
         </div>
     )
     

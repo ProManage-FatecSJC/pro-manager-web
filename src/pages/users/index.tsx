@@ -8,9 +8,12 @@ import { useEffect, useState } from "react";
 import diacritics from 'diacritics';
 import api from "../../api/api";
 import { URI } from "../../api/uri";
+import { ERole } from "../../enum/ERole";
+import { ModalUserRegister } from "../../components/modalUserRegister";
 
 export function Users() {
     const navigate = useNavigate()
+    const [isUserModalOpen, setIsUserModalOpen] = useState(false);
     const [user, setUser] = useState<any[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [filteredUser, setFilteredUser] = useState<any[]>([]);
@@ -63,7 +66,7 @@ export function Users() {
                         <MagnifyingGlass size={24} />
                     </div>
                 </div>
-                <button>Adicionar Usuário</button>
+                <button onClick={() => setIsUserModalOpen(true)}>Adicionar Usuário</button>
                 <button onClick={() => navigate('/dashboard')}>DASHBOARD</button>
             </header>
             <div className="filter_container">
@@ -100,7 +103,7 @@ export function Users() {
                                             key={index}
                                             userName={member.name}
                                             userEmail={member.email}
-                                            userRole={member.role}
+                                            userRole={ERole[member.role]}
                                             userImage={mock_avatar}
                                             userId={member.id}
                                         />
@@ -112,6 +115,12 @@ export function Users() {
                 }
             </main>
             
+            <ModalUserRegister
+                isOpen={isUserModalOpen}
+                setModalOpen={() => setIsUserModalOpen(!isUserModalOpen)}
+            />
         </div>
+
+        
     );
 }
