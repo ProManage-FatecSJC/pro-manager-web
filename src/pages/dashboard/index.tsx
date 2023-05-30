@@ -255,22 +255,20 @@ export function Dashboard() {
 
           <div ref={chartRef}></div>
           <div className="contador">
-            <h3>Membros:</h3>
-            <h4>{member.length}</h4>
+            <h1>Membros:</h1>
+            <h1>{member.length}</h1>
           </div>
           <div ref={chartRef2}></div>
 
         </div>
 
-        <div className="chartRow">
-
+        <div className="graphics-container">
           <div ref={chartRef3}></div>
           <div ref={chartRef4}></div>
           <div ref={chartRef5}></div>
         </div>
 
-        <div className="graphics-container">
-
+        <div className="buttonFooter">
           <button onClick={() => navigate('/partners')}>PARCEIROS</button>
         </div>
       </main>
