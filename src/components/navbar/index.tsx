@@ -1,4 +1,4 @@
-import { Bell, SignOut, User, UserPlus } from 'phosphor-react';
+import { Bell, SignOut, User,  Users } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { ModalUserRegister } from '../../components/modalUserRegister';
 import './styles.scss'
@@ -52,8 +52,8 @@ export function Navbar() {
                 </button>
 
                 {userRole == 0 && 
-                <button name='userplusIcon' onClick={() => setIsUserModalOpen(true)}>
-                    {iconUserFill ? <User size={24} weight='fill' color='#f8f8f8'/> : <UserPlus size={24} color='#f8f8f8'/>}
+                <button name='userplusIcon' onClick={() => navigate('users')}>
+                    {iconUserFill ? <Users size={24} weight='fill' color='#f8f8f8'/> : <Users size={24} color='#f8f8f8'/>}
                 </button>}
 
                 <button name='signoutIcon' onClick={handleIconFill}>
