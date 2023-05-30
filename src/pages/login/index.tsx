@@ -64,9 +64,8 @@ export function Login() {
 
                         <div className="input_wrapper">
                             <div className="label_wrapper">
-                                <label htmlFor="password">Senha</label>
+                                <label htmlFor="password">  </label>
                                 <a href="#">
-                                    Esqueceu a senha?
                                 </a>
                             </div>
                             <input
