@@ -96,7 +96,7 @@ export function ModalUpdateUser({ isOpen, setModalOpen, userId }: ModalProps) {
                         <div>
                             <UsersThree size={32} weight="fill" />
                             <div>
-                                <span>Adicionar um Usuário</span>
+                                <span>Atualização de Usuário</span>
                                 <p>Coloque os dados do seu Usuário </p>
                             </div>
                         </div>
