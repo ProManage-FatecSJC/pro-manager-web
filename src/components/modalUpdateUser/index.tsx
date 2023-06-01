@@ -1,22 +1,25 @@
 import { X, UsersThree } from 'phosphor-react';
-import './style.scss';
 import { useEffect, useState } from 'react';
 import api from '../../api/api';
 import { URI } from '../../api/uri';
 import { useNavigate } from 'react-router-dom';
 import { Eye, EyeClosed } from 'phosphor-react';
 
+import './styleModalUpdate.scss';
+
 type ModalProps = {
     isOpen: boolean;
     setModalOpen: () => void;
-
+    userId: string;
 }
 
-export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
+export function ModalUpdateUser({ isOpen, setModalOpen, userId }: ModalProps) {
     const [showPassword, setShowPassword] = useState(false);
+    const [showOldPassword, setShowOldPassword] = useState(false);
     const [UserName, setUserName] = useState('');
     const [UserEmail, setUserEmail] = useState('');
     const [UserSenha, setUserSenha] = useState('');
+    const [UserSenhaAtual, setUserSenhaAtual] = useState('');
     const [UserNivel, setUserNivel] = useState('');
     const navigate = useNavigate()
     const token = localStorage.getItem('token')
@@ -25,30 +28,52 @@ export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
         setShowPassword(!showPassword);
     }
 
+    function handleShowOldPassword() {
+        setShowOldPassword(!showOldPassword);
+    }
+
     let user = {
         name: UserName,
         email: UserEmail,
-        password: UserSenha,
-        role: parseInt(UserNivel),
+        role: UserNivel
     }
 
-    const handleNewPartner = async (e: any) => {
+    const handleUpdatePartner = async (e: any) => {
         e.preventDefault();
         api.
-        post(URI.REGISTER, user, {
-            headers: {
-                Authorization: token
-            }
-        })
-        .then(response => {
-            if(response.status == 200){
-                window.location.reload()
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            put(URI.USERS + `/${userId}`, user, {
+                headers: {
+                    Authorization: token
+                }
+            })
+            .then(response => {
+                if (response.status == 200) {
+                    window.location.reload()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
+
+    const handleGetPartner = async () => {
+        if(isOpen){
+            api.get(`${URI.USERS}/${userId}`, {
+                headers: {
+                    Authorization: token
+                }
+            }).then(res => {
+                console.log(res.data)
+                setUserName(res.data.name)
+                setUserEmail(res.data.email)
+                setUserNivel(res.data.role)
+            })
+        }
+    }
+
+    useEffect(() => {
+        handleGetPartner()
+    }, [isOpen])
 
     useEffect(() => {
         function onEsc(event: KeyboardEvent) {
@@ -65,9 +90,9 @@ export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
 
     if (isOpen) {
         return (
-            <div className='modal_user_wrapper'>
+            <div className='modal_update_user_wrapper'>
                 <main>
-                    <div className="header_line">
+                    <div className="header_line_wrapper">
                         <div>
                             <UsersThree size={32} weight="fill" />
                             <div>
@@ -75,11 +100,11 @@ export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
                                 <p>Coloque os dados do seu Usuário </p>
                             </div>
                         </div>
-                        <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit" />
+                        <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit_update" />
                     </div>
-                    <form onSubmit={handleNewPartner}>
-                        <div className="form_user_content_wrapper">
-                            <div className="input_user_wrapper">
+                    <form onSubmit={handleUpdatePartner}>
+                        <div className="form_update_user_content_wrapper">
+                            <div className="input_update_user_wrapper">
                                 <label htmlFor="name">Nome do Usuario</label>
                                 <input
                                     id="name"
@@ -87,11 +112,10 @@ export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
                                     name="name"
                                     placeholder='Digite o nome do Usuário'
                                     onChange={e => setUserName(e.target.value)}
+                                    value={UserName}
                                     required
                                 />
                             </div>
-                        </div>
-                        <div className="form_user_content_wrapper">
                             <div className="input_user_wrapper">
                                 <label htmlFor="email">e-Mail</label>
                                 <input
@@ -100,50 +124,22 @@ export function ModalUpdateUser({ isOpen, setModalOpen }: ModalProps) {
                                     name="name"
                                     placeholder='Digite o e-Email'
                                     onChange={e => setUserEmail(e.target.value)}
-                                    required
+                                    value={UserEmail}
+                                    disabled
                                 />
                             </div>
-                        </div>
-                            <div className="form_user_content_wrapper">
-                            <div className="input_user_wrapper">
-                                <label htmlFor="password">Senha</label>
-                                
-                                <input
-                                    id="password"
-                                    type={showPassword ? 'text' : 'password'}
-                                    name="password"
-                                    placeholder='Digite uma senha'
-                                    onChange={e => setUserSenha(e.target.value)}
-                                    required
-                                />
-
-                            {showPassword ?
-                                (<Eye 
-                                    size={20} 
-                                    className="eyes" 
-                                    onClick={handleShowPassword}
-                                />)
-                                :
-                                (<EyeClosed 
-                                    size={20} 
-                                    className="eyes" 
-                                    onClick={handleShowPassword}
-                                />
-                            )}
-                            </div>
-
-                        </div>
-                            <div className="form_user_content_wrapper">
-                            <div className="input_user_wrapper">
+                        
+                            <div className="input_update_user_wrapper">
                                 <label htmlFor="privacy">Nível de Acesos / Cargo</label>
                                 <select
                                     name="acesso"
                                     id="acesso"
                                     onChange={e => setUserNivel(e.target.value)}
+                                    value={UserNivel}
                                 >
                                     <option>Selecione</option>
-                                    <option value="0">Administrador</option>
-                                    <option value="1">Observador</option>
+                                    <option value={0}>Administrador</option>
+                                    <option value={1}>Observador</option>
                                 </select>
                             </div>
                         </div>

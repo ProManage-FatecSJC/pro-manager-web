@@ -1,4 +1,4 @@
-.modal_user_wrapper {
+.modal_update_user_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,30 +15,21 @@
     z-index: 100;
 
     main {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        flex-direction: column;
+        background-color: #f8f8f8;
+        border-radius: 16px;
+        padding: 2.4rem;
 
-        width: 100%;
         max-width: 800px;
-        height: 85% !important;
-        max-height: 558px;
-
-        padding: 0.8rem 1.6rem;
-
-        border-radius: 1.6rem;
-
-        background: #f8f8f8;
-
-        .header_line {
+        width: 100%;
+        
+        .header_line_wrapper {
             display: flex;
             justify-content: space-between;
             margin-bottom: 2.4rem;
 
             width: 100%;
 
-            .icon_exit:hover {
+            .icon_exit_update:hover {
                 cursor: pointer;
             }
 
@@ -63,9 +54,9 @@
 
         form {
             width: 100%;
-            .form_user_content_wrapper {
+            .form_update_user_content_wrapper {
 
-                .input_user_wrapper {
+                .input_update_user_wrapper {
                     margin-bottom: 0.8rem;
                     label {
                         margin-bottom: 0.4rem;
@@ -111,9 +102,32 @@
                         display: none;
                     }
 
-                    & + .input_wrapper {
+                    & + .input_user_wrapper {
                         margin-top: 1.6rem;
+input {
+                        width: 100%;
+                        border: 0.1rem solid #e2e8f0;
+                        border-radius: 0.4rem;
 
+                        padding:1.6rem 1.2rem;
+                        margin-top: 0.8rem;
+
+                        background: none;
+
+                        &::placeholder {
+                            color: #94a3b8;
+                        }
+
+                        &:focus,
+                        &:hover {
+                            border: 1px solid #00688C;
+                            outline: none;
+                        }
+
+                        &:disabled {
+                            opacity: 0.35;
+                        }
+                    }
                         .label_wrapper {
                             display: flex;
                             justify-content: space-between;

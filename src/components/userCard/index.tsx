@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ModalUserRegister } from "../modalUserRegister";
+import { ModalUpdateUser } from "../modalUpdateUser";
 
 export function UserCard({userImage, userName, userRole, userEmail, userId}: any) {
 
@@ -19,14 +20,15 @@ export function UserCard({userImage, userName, userRole, userEmail, userId}: any
             </div>
 
             <div className='teste'>
-                <button onClick={() => {setIsModalUpdateOpen(true)}}> Atualizar usuário </button>
+                <button onClick={() => {setIsModalUpdateOpen(true)}}> Editar usuário </button>
             </div>
 
         </td>
 
-        <ModalUserRegister 
+        <ModalUpdateUser
             isOpen={isModalUpdateOpen}
-            setModalOpen={() => setIsModalUpdateOpen(!isModalUpdateOpen)}/>
+            setModalOpen={() => setIsModalUpdateOpen(!isModalUpdateOpen)}
+            userId={userId}/>
         </>
     )
 }

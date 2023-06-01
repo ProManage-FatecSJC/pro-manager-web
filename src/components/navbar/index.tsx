@@ -46,10 +46,6 @@ export function Navbar() {
                     {iconBellFill ? <Bell size={24} weight='fill' color='#f8f8f8'/> : <User size={24} color='#f8f8f8'/>}
                 </button>
 
-                <button name='bellIcon' onClick={handleIconFill}>
-                    {iconUserFill ? <User size={24} weight='fill' color='#f8f8f8'/> : <Bell size={24} color='#f8f8f8'/>}
-                </button>
-
                 {userRole == 0 && 
                 <button name='userplusIcon' onClick={() => navigate('users')}>
                     {iconUserFill ? <Users size={24} weight='fill' color='#f8f8f8'/> : <Users size={24} color='#f8f8f8'/>}

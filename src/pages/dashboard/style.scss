@@ -51,6 +51,22 @@
             display: flex;
             align-items: center;
 
+            .contador_red{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 2.4rem;
+                background-color: #c51f1f;
+                gap: 0.4rem;
+
+                border-radius: 0.8rem;
+                h1{
+
+                    color: #e2e2e2;
+                }
+            }
+
             .contador{
                 display: flex;
                 justify-content: center;
