@@ -16,6 +16,8 @@ export function Dashboard() {
   const chartRef3 = useRef(null)
   const chartRef4 = useRef(null)
   const chartRef5 = useRef(null)
+  const chartRef6 = useRef(null)
+  const chartRef7 = useRef(null)
   const token = localStorage.getItem('token')
   const [partner, setPartner]: any[] = useState([]);
   const [member, setMember]: any[] = useState([]);
@@ -130,6 +132,30 @@ export function Dashboard() {
       }]
     };
 
+    const bars = {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'MEMBROS'
+      },
+      series: [{
+        data: chartData
+      }]
+    };
+
+    const pie = {
+      chart: {
+        type: 'pie'
+      },
+      title: {
+        text: 'MEMBROS'
+      },
+      series: [{
+        data: chartData
+      }]
+    };
+
 
     // Inicializa o gráfico
     Highcharts.chart(chartRef.current, area);
@@ -137,6 +163,8 @@ export function Dashboard() {
     Highcharts.chart(chartRef3.current, bar)
     Highcharts.chart(chartRef4.current, line)
     Highcharts.chart(chartRef5.current, line)
+    Highcharts.chart(chartRef6.current, bars)  
+    Highcharts.chart(chartRef7.current, pie)
   });
 
   const getName = () => {
@@ -266,6 +294,12 @@ export function Dashboard() {
           <div ref={chartRef3}></div>
           <div ref={chartRef4}></div>
           <div ref={chartRef5}></div>
+        </div>
+
+        <div className="member-graphics">
+         <div ref={chartRef6}></div>
+         <div ref={chartRef7}></div>
+
         </div>
 
         <div className="buttonFooter">
