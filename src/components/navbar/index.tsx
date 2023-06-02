@@ -1,62 +1,55 @@
-import { Bell, SignOut, User,  Users } from 'phosphor-react';
 import { useEffect, useState } from 'react';
-import { ModalUserRegister } from '../../components/modalUserRegister';
-import './styles.scss'
 import { useNavigate } from 'react-router-dom';
 
+import { SignOut, User, Users } from 'phosphor-react';
+import { ModalUserProfile } from '../modalUserProfile';
+import './styles.scss';
+
 export function Navbar() {
-    const [iconBellFill, setIconBellFill] = useState(false);
-    const [iconUserFill, setIconUserFill] = useState(false);
-    const [iconUserPlusFill, setIconUserPlusFill] = useState(false);
-    const [iconSignoutFill, setIconSignoutFill] = useState(false);
-    const [userRole, setUserRole] = useState(null)
-    const navigate = useNavigate()
+  const [userRole, setUserRole] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-    const getRole = () => {
-        let token = localStorage.getItem('token')?.split(' ')[1] as string
-        let tokenData = JSON.parse(atob(token.split('.')[1]))
-        setUserRole(tokenData.role)
-      }
+  const getRole = () => {
+    let token = localStorage.getItem('token')?.split(' ')[1] as string;
+    let tokenData = JSON.parse(atob(token.split('.')[1]));
+    setUserRole(tokenData.role);
+  };
 
-      useEffect(() => {
-        getRole()
-      }, [])
+  useEffect(() => {
+    getRole();
+  }, []);
 
-    function handleIconFill(event: React.MouseEvent<HTMLButtonElement>) {
-        switch (event.currentTarget.name) {
+  function handleSignOut() {
+    localStorage.clear();
+    navigate('/');
+  }
 
-            case 'bellIcon':
-                setIconBellFill(!iconBellFill);
-            case 'userplusicon':
-                setIconUserPlusFill(!iconUserPlusFill);
-                break;
-            case 'signoutIcon':
-                setIconSignoutFill(!iconSignoutFill);
-                localStorage.clear()
-                navigate('/');
-                break;
-        }
-    }
+  function handleUserIconClick() {
+    setModalOpen(true);
+    console.log(modalOpen)
+  }
 
-    return (
-        <div className='nav_menu'>
-            <h1>PROMANAGER</h1>
-            <div className='icon_div'>
-                <button name='userIcon' onClick={handleIconFill}>
-                    {iconBellFill ? <Bell size={24} weight='fill' color='#f8f8f8'/> : <User size={24} color='#f8f8f8'/>}
-                </button>
+  return (
+    <div className='nav_menu'>
+      <h1>PROMANAGER</h1>
+      <div className='icon_div'>
+        <button name='userIcon' onClick={handleUserIconClick}>
+          <User size={24} color='#f8f8f8' />
+        </button>
 
-                {userRole == 0 && 
-                <button name='userplusIcon' onClick={() => navigate('users')}>
-                    {iconUserFill ? <Users size={24} weight='fill' color='#f8f8f8'/> : <Users size={24} color='#f8f8f8'/>}
-                </button>}
+        {userRole === 0 && (
+          <button name='userplusIcon' onClick={() => navigate('users')}>
+            <Users size={24} color='#f8f8f8' />
+          </button>
+        )}
 
-                <button name='signoutIcon' onClick={handleIconFill}>
-                    {iconSignoutFill ? <SignOut size={24} weight='fill' color='#f8f8f8'/> : <SignOut size={24} color='#f8f8f8'/>}
-                </button>
+        <button name='signoutIcon' onClick={handleSignOut}>
+          <SignOut size={24} color='#f8f8f8' />
+        </button>
+      </div>
 
-            </div>
-        </div>
-    )
-    
+      <ModalUserProfile isOpen={modalOpen} setModalOpen={() => setModalOpen(!modalOpen)} />
+    </div>
+  );
 }
