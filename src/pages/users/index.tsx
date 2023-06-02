@@ -56,7 +56,7 @@ export function Users() {
             })
     }, []);
 
-    return(
+    return (
         <div className="register-container">
             <header className='table_header'>
                 <h1>Usuários</h1>
@@ -114,13 +114,13 @@ export function Users() {
                     )
                 }
             </main>
-            
+
             <ModalUserRegister
                 isOpen={isUserModalOpen}
                 setModalOpen={() => setIsUserModalOpen(!isUserModalOpen)}
             />
         </div>
 
-        
+
     );
 }
