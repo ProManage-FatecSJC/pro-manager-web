@@ -34,7 +34,7 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
 
     if (isOpen) {
         return (
-            <div className='modal_user_wrapper'>
+            <div className='modal_info_user_wrapper'>
                 <main>
                 
                     <div className="header_line">
@@ -47,7 +47,7 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
                             <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit" />  
                         </div>
                     </div>
-                    <img src={partnerImage} alt="Foto do parceiro" />
+                    <img src={partnerImage} sizes='32' alt="Foto do parceiro" />
                     <p><strong>Status:</strong> {partnerStatus}</p>
                     <p><strong>Privacidade:</strong> {partnerPrivacy}</p>
                     <p><strong>Tipo:</strong> {partnerType}</p>

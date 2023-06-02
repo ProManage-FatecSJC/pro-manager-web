@@ -20,7 +20,7 @@
         justify-content: center;
         align-items: flex-end;
 
-        .button_green{
+        button{
             padding: 0.5rem 1.2rem;
     
             border: 1px solid #4C825C;
@@ -37,28 +37,6 @@
     
             &:hover {
                 background: #4c825c;
-                color: #f8f8f8;
-                cursor: pointer;
-            }
-        }
-
-        .button_red {
-            padding: 0.5rem 1.2rem;
-    
-            border: 1px solid #c51f1f;
-            background: none;
-    
-            border-radius: 0.8rem;
-    
-            color: #c51f1f;
-            font-weight: 500;
-    
-            transition: 0.2s;
-
-            margin-bottom: 1.0rem;
-    
-            &:hover {
-                background: #c51f1f;
                 color: #f8f8f8;
                 cursor: pointer;
             }

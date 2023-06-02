@@ -4,6 +4,7 @@ import { Login, Partners } from "../pages";
 import { Dashboard } from "../pages/dashboard";
 import { Members } from "../pages/members";
 import{ ArquivedPartners } from "../pages/archived_partners"
+import { Users } from "../pages/users";
 
 
 export function AppRoutes() {
@@ -15,6 +16,7 @@ export function AppRoutes() {
                 <Route path="/dashboard" element={<Dashboard />}/>
                 <Route path="/members" element={<Members />}/>
                 <Route path="/archivedPartners" element={<ArquivedPartners/>}/>
+                <Route path="/users" element={<Users />}/>
             </Route>
         </Routes>
     )

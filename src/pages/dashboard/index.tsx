@@ -16,6 +16,8 @@ export function Dashboard() {
   const chartRef3 = useRef(null)
   const chartRef4 = useRef(null)
   const chartRef5 = useRef(null)
+  const chartRef6 = useRef(null)
+  const chartRef7 = useRef(null)
   const token = localStorage.getItem('token')
   const [partner, setPartner]: any[] = useState([]);
   const [member, setMember]: any[] = useState([]);
@@ -37,7 +39,7 @@ export function Dashboard() {
         console.log(response.data)
         setPartner(response.data);
       })
-  },[])
+  }, [])
 
   useEffect(() => {
     api.get(URI.MEMBERS, {
@@ -48,7 +50,7 @@ export function Dashboard() {
       .then((response) => {
         setMember(response.data);
       })
-  },[])
+  }, [])
 
   useEffect(() => {
 
@@ -130,6 +132,30 @@ export function Dashboard() {
       }]
     };
 
+    const bars = {
+      chart: {
+        type: 'bar'
+      },
+      title: {
+        text: 'MEMBROS'
+      },
+      series: [{
+        data: chartData
+      }]
+    };
+
+    const pie = {
+      chart: {
+        type: 'pie'
+      },
+      title: {
+        text: 'MEMBROS'
+      },
+      series: [{
+        data: chartData
+      }]
+    };
+
 
     // Inicializa o gráfico
     Highcharts.chart(chartRef.current, area);
@@ -137,6 +163,8 @@ export function Dashboard() {
     Highcharts.chart(chartRef3.current, bar)
     Highcharts.chart(chartRef4.current, line)
     Highcharts.chart(chartRef5.current, line)
+    Highcharts.chart(chartRef6.current, bars)  
+    Highcharts.chart(chartRef7.current, pie)
   });
 
   const getName = () => {
@@ -157,9 +185,9 @@ export function Dashboard() {
         Authorization: token
       }
     })
-    .then((response) => {
-      setPartner(response.data);
-    })
+      .then((response) => {
+        setPartner(response.data);
+      })
   }
 
   const changeType = (value: string) => {
@@ -170,9 +198,9 @@ export function Dashboard() {
         Authorization: token
       }
     })
-    .then((response) => {
-      setPartner(response.data);
-    })
+      .then((response) => {
+        setPartner(response.data);
+      })
   }
 
   const changePrivacy = (value: string) => {
@@ -183,9 +211,9 @@ export function Dashboard() {
         Authorization: token
       }
     })
-    .then((response) => {
-      setPartner(response.data);
-    })
+      .then((response) => {
+        setPartner(response.data);
+      })
   }
 
   return (
@@ -199,52 +227,52 @@ export function Dashboard() {
             <div className="filter-group">
               <select name="" id="" className="filter" onChange={(e) => changeState(e.target.value)}>
 
-                        <option value="all">Estados</option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
+                <option value="all">Estados</option>
+                <option value="AC">Acre</option>
+                <option value="AL">Alagoas</option>
+                <option value="AP">Amapá</option>
+                <option value="AM">Amazonas</option>
+                <option value="BA">Bahia</option>
+                <option value="CE">Ceará</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="GO">Goiás</option>
+                <option value="MA">Maranhão</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="PA">Pará</option>
+                <option value="PB">Paraíba</option>
+                <option value="PR">Paraná</option>
+                <option value="PE">Pernambuco</option>
+                <option value="PI">Piauí</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="RN">Rio Grande do Norte</option>
+                <option value="RS">Rio Grande do Sul</option>
+                <option value="RO">Rondônia</option>
+                <option value="RR">Roraima</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="SP">São Paulo</option>
+                <option value="SE">Sergipe</option>
+                <option value="TO">Tocantins</option>
 
               </select>
 
 
-              
+
               <select name="" id="" className="filter" onChange={(e) => changeType(e.target.value)}>
 
-              <option value="2">Tipo</option>
-              <option value="0">Único</option>
-              <option value="1">Múltiplo</option>
+                <option value="2">Tipo</option>
+                <option value="0">Único</option>
+                <option value="1">Múltiplo</option>
 
               </select>
 
               <select name="" id="" className="filter" onChange={(e) => changePrivacy(e.target.value)}>
 
-              <option value="2">Privacidade</option>
-              <option value="0">Privado</option>
-              <option value="1">Público</option>
+                <option value="2">Privacidade</option>
+                <option value="0">Privado</option>
+                <option value="1">Público</option>
 
               </select>
             </div>
@@ -254,23 +282,35 @@ export function Dashboard() {
         <div className="chartRow">
 
           <div ref={chartRef}></div>
-          <div className="contador">
-            <h3>Membros:</h3>
-            <h4>{member.length}</h4>
-          </div>
+          {member.length == 13 ?
+            <div className="contador_red">
+              <h1>Membros:</h1>
+              <h1>{member.length}</h1>
+            </div> :
+
+            <div className="contador">
+              <h1>Membros:</h1>
+              <h1>{member.length}</h1>
+            </div>
+          }
+
           <div ref={chartRef2}></div>
 
         </div>
 
-        <div className="chartRow">
-
+        <div className="graphics-container">
           <div ref={chartRef3}></div>
           <div ref={chartRef4}></div>
           <div ref={chartRef5}></div>
         </div>
 
-        <div className="graphics-container">
+        <div className="member-graphics">
+         <div ref={chartRef6}></div>
+         <div ref={chartRef7}></div>
 
+        </div>
+
+        <div className="buttonFooter">
           <button onClick={() => navigate('/partners')}>PARCEIROS</button>
         </div>
       </main>

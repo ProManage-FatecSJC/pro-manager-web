@@ -18,15 +18,18 @@
   }
 
   .icon_div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    width: 15.0rem;
     margin-right: 80px;
 
     button {
       border: none;
       background: transparent;
-      color: #fff;
-      font-size: 1rem;
       cursor: pointer;
-      padding: 0 1.5rem 0 0;
+      padding: 1.0rem;
     }
   }
 }

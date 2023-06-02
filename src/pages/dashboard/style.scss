@@ -12,13 +12,10 @@
 
         width: 90%;
         height: 90vh;
-        overflow-y: auto;
 
         .dashboard-header {
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
 
             width: 100%;
@@ -51,22 +48,37 @@
         }
 
         .chartRow{
-
-            margin: 2%;
             display: flex;
-            flex-direction: row;
-            height: 50%;
+            align-items: center;
 
-            .contador{
-                margin: 2%;
-                padding: 2%;
-                background-color: #566395;
-                height: 50%;
-                h3{
+            .contador_red{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 2.4rem;
+                background-color: #c51f1f;
+                gap: 0.4rem;
+
+                border-radius: 0.8rem;
+                h1{
+
                     color: #e2e2e2;
                 }
-                
-                h4{
+            }
+
+            .contador{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 2.4rem;
+                background-color: #566395;
+                gap: 0.4rem;
+
+                border-radius: 0.8rem;
+                h1{
+
                     color: #e2e2e2;
                 }
             }
@@ -74,13 +86,27 @@
 
     .graphics-container {
         display: flex;
-        align-items: flex-end;
         flex-direction: row-reverse;
         width: 100%;
 
         padding-block: 16px;
+    }
+
+    .member-graphics {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-left:11%;
+        width: 100%;
+
+        padding-block: 16px;
+    }
+
+    .buttonFooter {
+        width: 100%;
 
         button {
+            margin-bottom: 1%;
             padding: 1.2rem 1.6rem;
 
             border: 1px solid #4C825C;
@@ -99,7 +125,6 @@
                 cursor: pointer;
             }
         }
-
     }
 
 }
