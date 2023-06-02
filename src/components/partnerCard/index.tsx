@@ -24,13 +24,17 @@ type PartnerCardTypes = {
 export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId, partnerType, partnerAmount, partnerPrivacy, partnerContact, partnerResponsible, partnerState}: PartnerCardTypes) {
 
     const [isModalViewPartnerOpen, setIsModalViewPartnerOpen] = useState(false);
+    const [isModalArchivePartner, setIsModalArchivePartner] = useState(false)
     const navigate = useNavigate()
+
+    function openModalArchiveMembers(): void {
+        setIsModalArchivePartner(true)
+    }
 
     return (
         <>
-         <button onClick={() => setIsModalViewPartnerOpen(true)}>
         <td className="container_card">
-            <div className='partner_img'>
+            <div className='partner_img' onClick={() => setIsModalViewPartnerOpen(true)}>
                 <img src={partnerImage} alt="Foto do parceiro" />
             </div>
 
@@ -41,19 +45,18 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
             <div className='teste'>
 
-                <button onClick={() => {navigate('/Members', {
+                <button className='button_green' onClick={() => {navigate('/Members', {
                     state: {
                         partnerId: partnerId,
                         partnerStatus: partnerStatus
                         }
                     })}}> Visualizar membros </button>
-                <div className='partner_responsibility_img'>
-                    <img src={partnerResponsibilityImage} alt="Foto do responsável" />
-                </div>
+                {<button className='button_red' onClick={() => openModalArchiveMembers()}>
+                    ARQUIVAR PARCEIRO
+                </button>}
             </div>
 
         </td>
-    </button>
 
         
 

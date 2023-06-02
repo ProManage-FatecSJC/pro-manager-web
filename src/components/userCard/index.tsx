@@ -18,7 +18,6 @@ export function UserCard({userImage, userName, userRole, userEmail, userId}: any
                 <p>{userRole}</p>
                 <p>{userEmail}</p>
             </div>
-
             <div className='teste'>
                 <button onClick={() => {setIsModalUpdateOpen(true)}}> Editar usuário </button>
             </div>
