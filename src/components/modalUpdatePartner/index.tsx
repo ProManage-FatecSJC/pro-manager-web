@@ -56,6 +56,7 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
 
     const handlePartnerGet = async () => {
         if(isOpen){
+            console.log(partnerId)
             api.get(`${URI.PARTNER}/${partnerId}`, {
                 headers: {
                     Authorization: token
@@ -110,6 +111,7 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                             <div className="input_wrapper">
                                 <label htmlFor="name">Nome do parceiro</label>
                                 <input
+                                    value={partnerName}
                                     id="name"
                                     type="text"
                                     name="name"
@@ -121,32 +123,35 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                             <div className="input_wrapper">
                                 <label htmlFor="privacy">Público ou privado</label>
                                 <select
+                                    value={partnerPrivacy}
                                     name="privacy"
                                     id="privacy"
                                     onChange={e => setPartnerPrivacy(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="0">Público</option>
-                                    <option value="1">Privado</option>
+                                    <option value={0}>Público</option>
+                                    <option value={1}>Privado</option>
                                 </select>
                             </div>
 
                             <div className="input_wrapper">
                                 <label htmlFor="type">Tipo do parceiro</label>
                                 <select
+                                    value={partnerType}
                                     name="type"
                                     id="type"
                                     onChange={e => setPartnerType(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="0">Único</option>
-                                    <option value="1">Multiplo</option>
+                                    <option value={0}>Único</option>
+                                    <option value={1}>Multiplo</option>
                                 </select>
                             </div>
 
                             <div className="input_wrapper">
                                 <label htmlFor="membersQuantity">Quantidade de membros</label>
                                 <input
+                                    value={partnerAmount}
                                     id="membersQuantity"
                                     type="text"
                                     name="membersQuantity"
@@ -158,23 +163,24 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                             <div className="input_wrapper">
                                 <label htmlFor="status">Status</label>
                                 <select
+                                    value={partnerStatus}
                                     name="status"
                                     id="status"
                                     onChange={e => setPartnerStatus(e.target.value)}
                                 >
                                     <option>Selecione</option>
-                                    <option value="0">Em prospecção</option>
-                                    <option value="1">Primeiro contato feito</option>
-                                    <option value="2">Primeira reunião marcada/realizada</option>
-                                    <option value="3">Documentação enviada/em análise (Parceiro)</option>
-                                    <option value="4">Documentação devolvida (Em análise Academy)</option>
-                                    <option value="5">Documentação devolvida (Em análise Legal)</option>
-                                    <option value="6">Documentação analisada devolvida (Parceiro)</option>
-                                    <option value="7">Em preparação de Executive Sumary (Academy)</option>
-                                    <option value="8">ES em análise (Legal)</option>
-                                    <option value="9">ES em análise (Academy Global)</option>
-                                    <option value="10">Pronto para assinatura</option>
-                                    <option value="11">Parceria Firmada</option>
+                                    <option value={0}>Em prospecção</option>
+                                    <option value={1}>Primeiro contato feito</option>
+                                    <option value={2}>Primeira reunião marcada/realizada</option>
+                                    <option value={3}>Documentação enviada/em análise (Parceiro)</option>
+                                    <option value={4}>Documentação devolvida (Em análise Academy)</option>
+                                    <option value={5}>Documentação devolvida (Em análise Legal)</option>
+                                    <option value={6}>Documentação analisada devolvida (Parceiro)</option>
+                                    <option value={7}>Em preparação de Executive Sumary (Academy)</option>
+                                    <option value={8}>ES em análise (Legal)</option>
+                                    <option value={9}>ES em análise (Academy Global)</option>
+                                    <option value={10}>Pronto para assinatura</option>
+                                    <option value={11}>Parceria Firmada</option>
                                 </select>
                             </div>
 
@@ -182,6 +188,7 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                                 <label htmlFor="telephone">Número de contato</label>
                                 <IMaskInput
                                 mask={"(00)00000-0000"}
+                                    value={partnerContact}
                                     id="telephone"
                                     type="text"
                                     name="telephone"
@@ -193,6 +200,7 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                             <div className="input_wrapper">
                                 <label htmlFor="intermediateResponsible">Responsável</label>
                                 <input
+                                    value={partnerResponsible}
                                     id="intermediateResponsible"
                                     type="text"
                                     name="intermediateResponsible"
@@ -204,6 +212,7 @@ export function ModalUpdatePartner({ isOpen, setModalOpen, partnerId }: ModalPro
                             <div className="input_wrapper">
                                 <label htmlFor="state">Estado em que se encontra</label>
                                 <select
+                                    value={partnerState}
                                     name="state"
                                     id="state"
                                     onChange={e => setPartnerState(e.target.value)}                                

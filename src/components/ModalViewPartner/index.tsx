@@ -2,6 +2,7 @@ import { X, UsersThree } from 'phosphor-react';
 import './styles.scss';
 import { useEffect, useState } from 'react';
 import { ModalUpdatePartner } from '../modalUpdatePartner';
+import { ModalArchivePartner } from '../modalArchivePartner';
 
 type ModalProps = {
     isOpen: boolean;
@@ -22,6 +23,7 @@ type ModalProps = {
 export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerStatus, partnerImage, partnerPrivacy, partnerType, partnerAmount, partnerContact, partnerResponsible, partnerState, partnerId }: ModalProps) {
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+    const [isModalArchiveOpen, setIsModalArchiveOpen] = useState(false);
 
     useEffect(() => {
         function onEsc(event: KeyboardEvent) {
@@ -61,13 +63,19 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
                     <p><strong>Estado:</strong> {partnerState}</p>
                     <div className='buttons_modal'>
                     <button onClick={() => {setIsModalUpdateOpen(true)}} type="submit" className="btn_user_submit">Editar Parceiro</button>
-                    <button type="submit" className="btn_user_submit2">Arquivar Parceiro</button>
+                    <button type="submit" className="btn_user_submit2" onClick={() => {setIsModalArchiveOpen(true)}}>Arquivar Parceiro</button>
                     </div>
                 </main>
                 <ModalUpdatePartner
                isOpen={isModalUpdateOpen}
                setModalOpen={() => setIsModalUpdateOpen(!isModalUpdateOpen)}
                partnerId={partnerId}/>   
+
+                <ModalArchivePartner 
+                    isOpen={isModalArchiveOpen}
+                    setModalOpen={() => setIsModalArchiveOpen(!isModalArchiveOpen)}
+                    partnerId={partnerId}
+                    partnerName={partnerName}/>
             </div>
         )
     };

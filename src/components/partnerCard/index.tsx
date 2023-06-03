@@ -33,8 +33,8 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
     return (
         <>
-        <td className="container_card">
-            <div className='partner_img' onClick={() => setIsModalViewPartnerOpen(true)}>
+        <td className="container_card" onClick={() => setIsModalViewPartnerOpen(true)}>
+            <div className='partner_img'>
                 <img src={partnerImage} alt="Foto do parceiro" />
             </div>
 
@@ -51,9 +51,6 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
                         partnerStatus: partnerStatus
                         }
                     })}}> Visualizar membros </button>
-                {<button className='button_red' onClick={() => openModalArchiveMembers()}>
-                    ARQUIVAR PARCEIRO
-                </button>}
             </div>
 
         </td>
@@ -71,7 +68,9 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
                 partnerResponsible={partnerResponsibilityName}
                 partnerState={partnerState}
                 isOpen={isModalViewPartnerOpen}
-                setModalOpen={() => setIsModalViewPartnerOpen(!isModalViewPartnerOpen)}
+                setModalOpen={() => setIsModalViewPartnerOpen(!isModalViewPartnerOpen)
+                }
+                partnerId={partnerId}
             />        
                 </>
     )

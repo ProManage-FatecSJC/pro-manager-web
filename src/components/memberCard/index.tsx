@@ -24,20 +24,17 @@ export function MemberCard({ image, name, trade_name, CNPJ, telephone }: MemberC
 
     return (
         <>
-             <button onClick={() => setIsModalViewMemberOpen(true)}>
+            <td className="container_card" onClick={() => setIsModalViewMemberOpen(true)}>
+                <div className='partner_img'>
+                    <img src={image} alt="Foto do parceiro" />
+                </div>
 
-                <td className="container_card">
-                    <div className='partner_img'>
-                        <img src={image} alt="Foto do parceiro" />
-                    </div>
-
-                    <div className="info_card">
-                        <h2>{name}</h2>
-                        <p>Nome fantasia: {trade_name}</p>
-                        <p>CNPJ: {CNPJ}</p>
-                    </div>
-                </td>
-            </button>
+                <div className="info_card">
+                    <h2>{name}</h2>
+                    <p>Nome fantasia: {trade_name}</p>
+                    <p>CNPJ: {CNPJ}</p>
+                </div>
+            </td>
 
             <ModalViewMember
                 image={image}
@@ -47,7 +44,7 @@ export function MemberCard({ image, name, trade_name, CNPJ, telephone }: MemberC
                 CNPJ={CNPJ}
                 telephone={telephone}
                 setModalOpen={() => setIsModalViewMemberOpen(!isModalViewMemberOpen)}
-            /> 
+            />
         </>
     )
 }
