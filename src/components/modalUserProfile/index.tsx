@@ -10,12 +10,12 @@ import './styles.scss';
 type ModalProps = {
     isOpen: boolean;
     setModalOpen: () => void;
-    userId?: string;
 }
 
-export function ModalUserProfile({ isOpen, setModalOpen, userId }: ModalProps) {
+export function ModalUserProfile({ isOpen, setModalOpen }: ModalProps) {
     const [showPassword, setShowPassword] = useState(false);
     const [showOldPassword, setShowOldPassword] = useState(false);
+    const [userId, setUserId] = useState('')
     const [UserName, setUserName] = useState('');
     const [UserEmail, setUserEmail] = useState('');
     const [UserSenha, setUserSenha] = useState('');
@@ -35,6 +35,8 @@ export function ModalUserProfile({ isOpen, setModalOpen, userId }: ModalProps) {
     let user = {
         name: UserName,
         email: UserEmail,
+        oldPassword: UserSenhaAtual,
+        password: UserSenha,
         role: UserNivel
     }
 
@@ -48,7 +50,7 @@ export function ModalUserProfile({ isOpen, setModalOpen, userId }: ModalProps) {
             })
             .then(response => {
                 if (response.status == 200) {
-                    window.location.reload()
+                    navigate('/')
                 }
             })
             .catch(error => {
@@ -57,7 +59,11 @@ export function ModalUserProfile({ isOpen, setModalOpen, userId }: ModalProps) {
     }
 
     const handleGetPartner = async () => {
-        if(isOpen){
+        if (isOpen) {
+            let token2 = localStorage.getItem('token')?.split(' ')[1] as string
+            let tokenData = JSON.parse(atob(token2.split('.')[1]))
+            setUserId(tokenData.id)
+
             api.get(`${URI.USERS}/${userId}`, {
                 headers: {
                     Authorization: token
@@ -116,45 +122,41 @@ export function ModalUserProfile({ isOpen, setModalOpen, userId }: ModalProps) {
                                     required
                                 />
                             </div>
-                            <div className="input_user_wrapper">
-                                <label htmlFor="email">e-Mail</label>
+                            <div className="input_update_user_wrapper">
+                                <label htmlFor="email">E-mail</label>
                                 <input
                                     id="email"
                                     type="text"
                                     name="name"
-                                    placeholder='Digite o e-Email'
+                                    placeholder='Digite o e-mail'
                                     onChange={e => setUserEmail(e.target.value)}
                                     value={UserEmail}
                                     disabled
                                 />
                             </div>
 
-                            <div className="input_user_wrapper">
-                                <label htmlFor="email">Senha atual</label>
+                            <div className="input_update_user_wrapper">
+                                <label htmlFor="senhaAtual">Senha atual</label>
                                 <input
-                                    id="email"
+                                    id="senhaAtual"
                                     type="text"
-                                    name="name"
-                                    placeholder='Digite o e-Email'
-                                    onChange={e => setUserEmail(e.target.value)}
-                                    value={UserEmail}
-                                    disabled
+                                    name="senhaAtual"
+                                    placeholder='Digite a senha atual'
+                                    onChange={e => setUserSenhaAtual(e.target.value)}
                                 />
                             </div>
 
                             <div className="input_user_wrapper">
-                                <label htmlFor="email">Nova senha</label>
+                                <label htmlFor="novaSenha">Nova senha</label>
                                 <input
-                                    id="email"
+                                    id="novaSenha"
                                     type="text"
-                                    name="name"
-                                    placeholder='Digite o e-Email'
-                                    onChange={e => setUserEmail(e.target.value)}
-                                    value={UserEmail}
-                                    disabled
+                                    name="novaSenha"
+                                    placeholder='Digite a nova senha'
+                                    onChange={e => setUserSenha(e.target.value)}
                                 />
                             </div>
-                        
+
                             <div className="input_update_user_wrapper">
                                 <label htmlFor="privacy">Nível de Acesos / Cargo</label>
                                 <select
