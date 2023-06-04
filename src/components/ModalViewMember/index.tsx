@@ -1,5 +1,5 @@
 import { X, UsersThree } from 'phosphor-react';
-import './styles.scss';
+import './modalviewmemberstyles.scss';
 import { useEffect, useState } from 'react';
 
 type ModalProps = {
@@ -30,27 +30,23 @@ export function ModalViewMember({ isOpen, setModalOpen, image, name, trade_name,
     if (isOpen) {
         
         return (
-        <div className='modal_user_wrapper'>
+        <div className='modal_info_member_wrapper'>
             <main>
             
-                <div className="header_line">
+                <div className="header_member_line">
                     <div>
                         <UsersThree size={32} weight="fill" />
                         <div>
-                            <h1>Parceiro: {name}</h1>
+                            <h1>Membro: {name}</h1>
                             
                         </div>
-                        <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit" />  
+                        <X size={32} weight="bold" onClick={setModalOpen} className="exit_icon" />  
                     </div>
                 </div>
-                <img src={image} alt="Foto do parceiro" />
+                <img src={image} alt="Foto do membro" />
                 <p><strong>Nome Fantasia:</strong> {trade_name}</p>
                 <p><strong>CNPJ:</strong> {CNPJ}</p>
-                <p><strong>Telephone:</strong> {telephone}</p>
-                <div className='buttons_modal'>
-                <button type="submit" className="btn_user_submit">Editar Parceiro</button>
-                <button type="submit" className="btn_user_submit2">Arquivar Parceiro</button>
-                </div>
+                <p><strong>Telefone:</strong> {telephone}</p>
             </main>
         </div>
     )

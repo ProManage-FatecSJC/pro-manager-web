@@ -31,7 +31,7 @@
 
         background: #f8f8f8;
 
-        img{
+        img {
             height: 40%;
         }
 
@@ -39,11 +39,11 @@
             color: #737380;
         }
 
-        .exit_icon:hover{
+        .exit_icon:hover {
             cursor: pointer;
         }
 
-        
+
         .header_line {
             display: flex;
             justify-content: center;
@@ -72,10 +72,12 @@
 
         form {
             width: 100%;
+
             .form_user_content_wrapper {
 
                 .input_user_wrapper {
                     margin-bottom: 0.8rem;
+
                     label {
                         margin-bottom: 0.4rem;
                     }
@@ -85,7 +87,7 @@
                         border: 0.1rem solid #e2e8f0;
                         border-radius: 0.4rem;
 
-                        padding:1.6rem 1.2rem;
+                        padding: 1.6rem 1.2rem;
                         margin-top: 0.8rem;
 
                         background: none;
@@ -120,18 +122,18 @@
                         display: none;
                     }
 
-                    & + .input_wrapper {
+                    &+.input_wrapper {
                         margin-top: 1.6rem;
 
                         .label_wrapper {
                             display: flex;
                             justify-content: space-between;
 
-                            a{
+                            a {
                                 text-decoration: none;
                                 color: #00688C;
                                 line-height: 21px;
-                                
+
                                 &:hover {
                                     color: #0085b2;
                                 }
@@ -140,106 +142,105 @@
                     }
                 }
 
-                    select {
-                        width: 100%;
-                        border: 0.1rem solid #e2e8f0;
-                        border-radius: 0.4rem;
+                select {
+                    width: 100%;
+                    border: 0.1rem solid #e2e8f0;
+                    border-radius: 0.4rem;
 
-                        padding: 1.4rem 1.2rem;
+                    padding: 1.4rem 1.2rem;
 
-                        background: none;
+                    background: none;
 
-                        &:focus,
-                        &:hover{
-                            border: 1px solid #00688C;
-                            outline: none;
-                            cursor: pointer;
-                        }
+                    &:focus,
+                    &:hover {
+                        border: 1px solid #00688C;
+                        outline: none;
+                        cursor: pointer;
+                    }
 
-                        &:disabled {
-                            opacity: 0.35;
-                        }
+                    &:disabled {
+                        opacity: 0.35;
                     }
                 }
             }
         }
-    
-        .buttons_modal{
+    }
 
-            display: flex; // torna o container um flex container
-            justify-content: space-between; // alinha os componentes com espaço igual entre eles
-            align-items: center; // alinha os componentes verticalmente no centro
+    .buttons_modal {
 
-            width: 70%;
-            
-            .btn_user_submit {
-                position: absolute;
-                all: unset;
-                box-sizing: border-box;
-    
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 1.6rem 2.4rem;
-    
-                margin-top: 2.4rem;
-                margin-right: 2%;
-    
-                background: #4C825C;
-                border-radius: 0.4rem;
-                text-align: center;
-    
-                width: 50%;
-    
-                color: #fff;
-    
-                transition: background 0.2s;
-    
-                &:hover {
-                    background: #2f7c46;
-                    cursor: pointer;
-                }
-                
-                &:focus {
-                    outline: 2px solid #29292e;
-                    border-radius: 0.2rem;
-                }
+        display: flex; // torna o container um flex container
+        justify-content: space-between; // alinha os componentes com espaço igual entre eles
+        align-items: center; // alinha os componentes verticalmente no centro
+
+        width: 70%;
+
+        .btn_user_submit {
+            position: absolute;
+            all: unset;
+            box-sizing: border-box;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.6rem 2.4rem;
+
+            margin-top: 2.4rem;
+            margin-right: 2%;
+
+            background: #4C825C;
+            border-radius: 0.4rem;
+            text-align: center;
+
+            width: 50%;
+
+            color: #fff;
+
+            transition: background 0.2s;
+
+            &:hover {
+                background: #2f7c46;
+                cursor: pointer;
+            }
+
+            &:focus {
+                outline: 2px solid #29292e;
+                border-radius: 0.2rem;
+            }
         }
-    
+
     }
 
     .btn_user_submit2 {
-                    position: absolute;
-                    all: unset;
-                    box-sizing: border-box;
-        
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 1.6rem 2.4rem;
-        
-                    margin-top: 2.4rem;
-                    margin-right: 2%;
-        
-                    background: #c51f1f;
-                    border-radius: 0.4rem;
-                    text-align: center;
-        
-                    width: 50%;
-        
-                    color: #fff;
-        
-                    transition: background 0.2s;
-        
-                    &:hover {
-                        background: #d24444;
-                        cursor: pointer;
-                    }
-                    
-                    &:focus {
-                        outline: 2px solid #29292e;
-                        border-radius: 0.2rem;
-                    }
+        position: absolute;
+        all: unset;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.6rem 2.4rem;
+
+        margin-top: 2.4rem;
+        margin-right: 2%;
+
+        background: #c51f1f;
+        border-radius: 0.4rem;
+        text-align: center;
+
+        width: 50%;
+
+        color: #fff;
+
+        transition: background 0.2s;
+
+        &:hover {
+            background: #d24444;
+            cursor: pointer;
+        }
+
+        &:focus {
+            outline: 2px solid #29292e;
+            border-radius: 0.2rem;
+        }
+    }
 }
-}
-    

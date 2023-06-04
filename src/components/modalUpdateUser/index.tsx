@@ -143,7 +143,7 @@ export function ModalUpdateUser({ isOpen, setModalOpen, userId }: ModalProps) {
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" className="btn_user_submit">Cadastrar Usuário</button>
+                        <button type="submit" className="btn_user_submit">Atualizar Usuário</button>
                     </form>
 
                 </main>

@@ -49,10 +49,23 @@ export function Dashboard() {
     })
       .then((response) => {
         setMember(response.data);
+
       })
   }, [])
 
   useEffect(() => {
+
+    const membersEmProspec = member.filter((x: any) => x.partner.status == 0).length
+    const membersPrimeiroContato = member.filter((x: any) => x.partner.status == 1).length
+    const membersPrimeiraReuniao = member.filter((x: any) => x.partner.status == 2).length
+    const members4 = member.filter((x: any) => x.partner.status == 3).length
+    const members5 = member.filter((x: any) => x.partner.status == 4).length
+    const members6 = member.filter((x: any) => x.partner.status == 5).length
+    const members7 = member.filter((x: any) => x.partner.status == 6).length
+    const members8 = member.filter((x: any) => x.partner.status == 7).length
+    const members9 = member.filter((x: any) => x.partner.status == 8).length
+    const members10 = member.filter((x: any) => x.partner.status == 9).length
+    const members11 = member.filter((x: any) => x.partner.status == 10).length
 
     const partnersEmProspec = partner.filter((x: any) => x.status == 0).length
     const partnersPrimeiroContato = partner.filter((x: any) => x.status == 1).length
@@ -82,6 +95,10 @@ export function Dashboard() {
     const chartData = [{ name: xAxis[0], y: partnersEmProspec }, { name: xAxis[1], y: partnersPrimeiroContato }, { name: xAxis[2], y: partnersPrimeiraReuniao },
     { name: xAxis[3], y: partners4 }, { name: xAxis[4], y: partners5 }, { name: xAxis[5], y: partners6 }, { name: xAxis[6], y: partners7 }, { name: xAxis[7], y: partners8 },
     { name: xAxis[8], y: partners9 }, { name: xAxis[9], y: partners10 }, { name: xAxis[10], y: partners11 }]
+
+    const chartMemberData = [{ name: xAxis[0], y: membersEmProspec }, { name: xAxis[1], y: membersPrimeiroContato }, { name: xAxis[2], y: membersPrimeiraReuniao },
+    { name: xAxis[3], y: members4 }, { name: xAxis[4], y: members5 }, { name: xAxis[5], y: members6 }, { name: xAxis[6], y: members7 }, { name: xAxis[7], y: members8 },
+    { name: xAxis[8], y: members9 }, { name: xAxis[9], y: members10 }, { name: xAxis[10], y: members11 }]
 
     // Configurações do gráfico
     const area = {
@@ -140,7 +157,7 @@ export function Dashboard() {
         text: 'MEMBROS'
       },
       series: [{
-        data: chartData
+        data: chartMemberData
       }]
     };
 
@@ -152,7 +169,7 @@ export function Dashboard() {
         text: 'MEMBROS'
       },
       series: [{
-        data: chartData
+        data: chartMemberData
       }]
     };
 
