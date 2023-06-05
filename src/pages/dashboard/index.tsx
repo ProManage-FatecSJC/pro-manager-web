@@ -299,18 +299,11 @@ export function Dashboard() {
         <div className="chartRow">
 
           <div ref={chartRef}></div>
-          {member.length == 13 ?
-            <div className="contador_red">
-              <h1>Membros:</h1>
-              <h1>{member.length}</h1>
-            </div> :
 
             <div className="contador">
               <h1>Membros:</h1>
               <h1>{member.length}</h1>
             </div>
-          }
-
           <div ref={chartRef2}></div>
 
         </div>

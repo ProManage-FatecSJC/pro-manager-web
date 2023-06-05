@@ -1,0 +1,111 @@
+.modal_error_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 100;
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 600px;
+        height: 85% !important;
+        max-height: 250px;
+
+        padding: 0.8rem 1.6rem;
+
+        border-radius: 1.6rem;
+
+        background: #f8f8f8;
+
+        img {
+            height: 40%;
+        }
+
+        p {
+            color: #737380;
+        }
+
+        .exit_icon:hover {
+            cursor: pointer;
+        }
+
+
+        .header_line_error {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2.4rem;
+            margin-bottom: 1%;
+            width: 100%;
+
+            >div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                
+
+                >h1{
+                    text-align: center;
+                }
+            }
+        }
+
+        .buttons_modal_error {
+
+            display: flex; // torna o container um flex container
+            justify-content: center; // alinha os componentes com espaço igual entre eles
+            align-items: center; // alinha os componentes verticalmente no centro
+
+            width: 70%;
+
+            .btn_error {
+                position: absolute;
+                all: unset;
+                box-sizing: border-box;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 1.6rem 2.4rem;
+
+                margin-top: 2.4rem;
+                margin-right: 2%;
+
+                background: #00688C;
+                border-radius: 0.4rem;
+                text-align: center;
+
+                width: 50%;
+
+                color: #fff;
+
+                transition: background 0.2s;
+
+                &:hover {
+                    background: #0085b2;
+                    cursor: pointer;
+                }
+
+                &:focus {
+                    outline: 2px solid #29292e;
+                    border-radius: 0.2rem;
+                }
+            }
+        }
+    }
+}
