@@ -18,10 +18,10 @@ type PartnerCardTypes = {
     partnerContact: any
     partnerResponsible: any
     partnerState: any
-
+    isArchived?: boolean
 }
 
-export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId, partnerType, partnerAmount, partnerPrivacy, partnerContact, partnerResponsible, partnerState}: PartnerCardTypes) {
+export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerName, partnerResponsibilityName, partnerStatus, partnerId, partnerType, partnerAmount, partnerPrivacy, partnerContact, partnerResponsible, partnerState, isArchived}: PartnerCardTypes) {
 
     const [isModalViewPartnerOpen, setIsModalViewPartnerOpen] = useState(false);
     const [isModalArchivePartner, setIsModalArchivePartner] = useState(false)
@@ -45,12 +45,15 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
 
             <div className='teste'>
 
-                <button className='button_green' onClick={() => {navigate('/Members', {
+                {!isArchived ?
+                    <button className='button_green' onClick={() => {navigate('/Members', {
                     state: {
                         partnerId: partnerId,
                         partnerStatus: partnerStatus
                         }
-                    })}}> Visualizar membros </button>
+                    })}}> Visualizar membros </button> : <div></div>
+                }
+                
             </div>
 
         </td>
@@ -67,6 +70,7 @@ export function PartnerCard({ partnerImage, partnerResponsibilityImage, partnerN
                 partnerContact={partnerContact}
                 partnerResponsible={partnerResponsibilityName}
                 partnerState={partnerState}
+                isArchived={isArchived}
                 isOpen={isModalViewPartnerOpen}
                 setModalOpen={() => setIsModalViewPartnerOpen(!isModalViewPartnerOpen)
                 }

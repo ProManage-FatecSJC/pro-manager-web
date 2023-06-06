@@ -88,6 +88,7 @@ export function ArquivedPartners() {
                                             partnerResponsibilityImage={mock_avatar_2}
                                             partnerId={member.id}
                                             partnerResponsible={member.Responsible}
+                                            isArchived={true}
                                         />
                                     ))}
                                 </tr>

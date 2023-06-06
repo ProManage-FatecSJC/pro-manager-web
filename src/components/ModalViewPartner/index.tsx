@@ -17,10 +17,10 @@ type ModalProps = {
     partnerState: string;
     partnerImage?: string;
     partnerId: string;
-
+    isArchived?: boolean
 }
 
-export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerStatus, partnerImage, partnerPrivacy, partnerType, partnerAmount, partnerContact, partnerResponsible, partnerState, partnerId }: ModalProps) {
+export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerStatus, partnerImage, partnerPrivacy, partnerType, partnerAmount, partnerContact, partnerResponsible, partnerState, partnerId, isArchived }: ModalProps) {
 
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
     const [isModalArchiveOpen, setIsModalArchiveOpen] = useState(false);
@@ -42,15 +42,15 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
         return (
             <div className='modal_info_user_wrapper'>
                 <main>
-                
+
                     <div className="header_line">
                         <div>
                             <UsersThree size={32} weight="fill" />
                             <div>
                                 <h1>Parceiro: {partnerName}</h1>
-                                
+
                             </div>
-                            <X size={32} weight="bold" onClick={setModalOpen} className="icon_exit" />  
+                            <X size={32} weight="bold" onClick={setModalOpen} className="exit_icon" />
                         </div>
                     </div>
                     <img src={partnerImage} sizes='32' alt="Foto do parceiro" />
@@ -62,20 +62,24 @@ export function ModalViewPartner({ isOpen, setModalOpen, partnerName, partnerSta
                     <p><strong>Responsável:</strong> {partnerResponsible}</p>
                     <p><strong>Estado:</strong> {partnerState}</p>
                     <div className='buttons_modal'>
-                    <button onClick={() => {setIsModalUpdateOpen(true)}} type="submit" className="btn_user_submit">Editar Parceiro</button>
-                    <button type="submit" className="btn_user_submit2" onClick={() => {setIsModalArchiveOpen(true)}}>Arquivar Parceiro</button>
+                        {!isArchived ? <>
+                            <button onClick={() => { setIsModalUpdateOpen(true) }} type="submit" className="btn_user_submit">Editar Parceiro</button>
+                            <button type="submit" className="btn_user_submit2" onClick={() => { setIsModalArchiveOpen(true) }}>Arquivar Parceiro</button>
+                        </>
+                            : <div></div>
+                        }
                     </div>
                 </main>
                 <ModalUpdatePartner
-               isOpen={isModalUpdateOpen}
-               setModalOpen={() => setIsModalUpdateOpen(!isModalUpdateOpen)}
-               partnerId={partnerId}/>   
+                    isOpen={isModalUpdateOpen}
+                    setModalOpen={() => setIsModalUpdateOpen(!isModalUpdateOpen)}
+                    partnerId={partnerId} />
 
-                <ModalArchivePartner 
+                <ModalArchivePartner
                     isOpen={isModalArchiveOpen}
                     setModalOpen={() => setIsModalArchiveOpen(!isModalArchiveOpen)}
                     partnerId={partnerId}
-                    partnerName={partnerName}/>
+                    partnerName={partnerName} />
             </div>
         )
     };

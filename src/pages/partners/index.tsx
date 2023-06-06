@@ -13,6 +13,8 @@ import mock_avatar from '../../assets/images/avatar.svg';
 import mock_avatar_2 from '../../assets/images/avatar_2.svg';
 import empty_image from '../../assets/images/Ilustração.svg';
 import './style.scss';
+import { EPrivacy } from '../../enum/EPrivacy';
+import { EType } from '../../enum/EType';
 
 interface Partner {
     id: number;
@@ -142,8 +144,8 @@ export function Partners() {
                                     {filteredPartner.map((member, index) => (
                                         <PartnerCard
                                             key={index}
-                                            partnerPrivacy={member.privacy}
-                                            partnerType={member.type}
+                                            partnerPrivacy={EPrivacy[member.privacy]}
+                                            partnerType={EType[member.type]}
                                             partnerAmount={member.membersQuantity}
                                             partnerContact={member.telephone}
                                             partnerState={member.state} 
